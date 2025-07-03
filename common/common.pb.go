@@ -24,6 +24,7 @@ const (
 type GetPaginateParams struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
+	Limit         int32                  `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -65,13 +66,23 @@ func (x *GetPaginateParams) GetPage() int32 {
 	return 0
 }
 
+func (x *GetPaginateParams) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
 type PaginateMeta struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	PerPage       int32                  `protobuf:"varint,1,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"`
-	CurrentPage   int32                  `protobuf:"varint,2,opt,name=current_page,json=currentPage,proto3" json:"current_page,omitempty"`
-	Total         int32                  `protobuf:"varint,3,opt,name=total,proto3" json:"total,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	PerPage         int32                  `protobuf:"varint,1,opt,name=per_page,json=perPage,proto3" json:"per_page,omitempty"`
+	CurrentPage     int32                  `protobuf:"varint,2,opt,name=current_page,json=currentPage,proto3" json:"current_page,omitempty"`
+	Total           int32                  `protobuf:"varint,3,opt,name=total,proto3" json:"total,omitempty"`
+	TotalPages      int32                  `protobuf:"varint,4,opt,name=total_pages,json=totalPages,proto3" json:"total_pages,omitempty"`
+	HasNextPage     bool                   `protobuf:"varint,5,opt,name=has_next_page,json=hasNextPage,proto3" json:"has_next_page,omitempty"`
+	HasPreviousPage bool                   `protobuf:"varint,6,opt,name=has_previous_page,json=hasPreviousPage,proto3" json:"has_previous_page,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *PaginateMeta) Reset() {
@@ -123,6 +134,27 @@ func (x *PaginateMeta) GetTotal() int32 {
 		return x.Total
 	}
 	return 0
+}
+
+func (x *PaginateMeta) GetTotalPages() int32 {
+	if x != nil {
+		return x.TotalPages
+	}
+	return 0
+}
+
+func (x *PaginateMeta) GetHasNextPage() bool {
+	if x != nil {
+		return x.HasNextPage
+	}
+	return false
+}
+
+func (x *PaginateMeta) GetHasPreviousPage() bool {
+	if x != nil {
+		return x.HasPreviousPage
+	}
+	return false
 }
 
 type GetOffsetParams struct {
@@ -321,13 +353,18 @@ var File_common_common_proto protoreflect.FileDescriptor
 
 const file_common_common_proto_rawDesc = "" +
 	"\n" +
-	"\x13common/common.proto\x12\x06common\"'\n" +
+	"\x13common/common.proto\x12\x06common\"=\n" +
 	"\x11GetPaginateParams\x12\x12\n" +
-	"\x04page\x18\x01 \x01(\x05R\x04page\"b\n" +
+	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x14\n" +
+	"\x05limit\x18\x02 \x01(\x05R\x05limit\"\xd3\x01\n" +
 	"\fPaginateMeta\x12\x19\n" +
 	"\bper_page\x18\x01 \x01(\x05R\aperPage\x12!\n" +
 	"\fcurrent_page\x18\x02 \x01(\x05R\vcurrentPage\x12\x14\n" +
-	"\x05total\x18\x03 \x01(\x05R\x05total\"?\n" +
+	"\x05total\x18\x03 \x01(\x05R\x05total\x12\x1f\n" +
+	"\vtotal_pages\x18\x04 \x01(\x05R\n" +
+	"totalPages\x12\"\n" +
+	"\rhas_next_page\x18\x05 \x01(\bR\vhasNextPage\x12*\n" +
+	"\x11has_previous_page\x18\x06 \x01(\bR\x0fhasPreviousPage\"?\n" +
 	"\x0fGetOffsetParams\x12\x16\n" +
 	"\x06offset\x18\x01 \x01(\x05R\x06offset\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\x05R\x05limit\" \n" +

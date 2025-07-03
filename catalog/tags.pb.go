@@ -881,7 +881,7 @@ func (x *DeleteTagsResponse) GetList() []*StatusTag {
 
 type CheckAvailableTagNamesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	List          []*StatusTag           `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	List          []bool                 `protobuf:"varint,1,rep,packed,name=list,proto3" json:"list,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -916,7 +916,7 @@ func (*CheckAvailableTagNamesResponse) Descriptor() ([]byte, []int) {
 	return file_catalog_tags_proto_rawDescGZIP(), []int{18}
 }
 
-func (x *CheckAvailableTagNamesResponse) GetList() []*StatusTag {
+func (x *CheckAvailableTagNamesResponse) GetList() []bool {
 	if x != nil {
 		return x.List
 	}
@@ -973,9 +973,9 @@ const file_catalog_tags_proto_rawDesc = "" +
 	"\x10DeleteTagsParams\x12\x10\n" +
 	"\x03ids\x18\x01 \x03(\x05R\x03ids\"<\n" +
 	"\x12DeleteTagsResponse\x12&\n" +
-	"\x04list\x18\x01 \x03(\v2\x12.catalog.StatusTagR\x04list\"H\n" +
-	"\x1eCheckAvailableTagNamesResponse\x12&\n" +
-	"\x04list\x18\x01 \x03(\v2\x12.catalog.StatusTagR\x04listB8Z6github.com/market-4-test/contract-go/catalog;catalogv1b\x06proto3"
+	"\x04list\x18\x01 \x03(\v2\x12.catalog.StatusTagR\x04list\"4\n" +
+	"\x1eCheckAvailableTagNamesResponse\x12\x12\n" +
+	"\x04list\x18\x01 \x03(\bR\x04listB8Z6github.com/market-4-test/contract-go/catalog;catalogv1b\x06proto3"
 
 var (
 	file_catalog_tags_proto_rawDescOnce sync.Once
@@ -1031,12 +1031,11 @@ var file_catalog_tags_proto_depIdxs = []int32{
 	0,  // 12: catalog.GetTagsOffsetResponse.list:type_name -> catalog.Tag
 	1,  // 13: catalog.GetTagsShortOffsetResponse.list:type_name -> catalog.TagShort
 	15, // 14: catalog.DeleteTagsResponse.list:type_name -> catalog.StatusTag
-	15, // 15: catalog.CheckAvailableTagNamesResponse.list:type_name -> catalog.StatusTag
-	16, // [16:16] is the sub-list for method output_type
-	16, // [16:16] is the sub-list for method input_type
-	16, // [16:16] is the sub-list for extension type_name
-	16, // [16:16] is the sub-list for extension extendee
-	0,  // [0:16] is the sub-list for field type_name
+	15, // [15:15] is the sub-list for method output_type
+	15, // [15:15] is the sub-list for method input_type
+	15, // [15:15] is the sub-list for extension type_name
+	15, // [15:15] is the sub-list for extension extendee
+	0,  // [0:15] is the sub-list for field type_name
 }
 
 func init() { file_catalog_tags_proto_init() }

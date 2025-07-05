@@ -763,7 +763,7 @@ func (x *GetCategoriesPaginateResponse) GetMeta() *common.PaginateMeta {
 	return nil
 }
 
-type GetCategoriesPaginateShortResponse struct {
+type GetCategoriesShortPaginateResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	List          []*CategoryShort       `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
 	Meta          *common.PaginateMeta   `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
@@ -771,20 +771,20 @@ type GetCategoriesPaginateShortResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetCategoriesPaginateShortResponse) Reset() {
-	*x = GetCategoriesPaginateShortResponse{}
+func (x *GetCategoriesShortPaginateResponse) Reset() {
+	*x = GetCategoriesShortPaginateResponse{}
 	mi := &file_catalog_categories_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetCategoriesPaginateShortResponse) String() string {
+func (x *GetCategoriesShortPaginateResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetCategoriesPaginateShortResponse) ProtoMessage() {}
+func (*GetCategoriesShortPaginateResponse) ProtoMessage() {}
 
-func (x *GetCategoriesPaginateShortResponse) ProtoReflect() protoreflect.Message {
+func (x *GetCategoriesShortPaginateResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_catalog_categories_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -796,19 +796,19 @@ func (x *GetCategoriesPaginateShortResponse) ProtoReflect() protoreflect.Message
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetCategoriesPaginateShortResponse.ProtoReflect.Descriptor instead.
-func (*GetCategoriesPaginateShortResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetCategoriesShortPaginateResponse.ProtoReflect.Descriptor instead.
+func (*GetCategoriesShortPaginateResponse) Descriptor() ([]byte, []int) {
 	return file_catalog_categories_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *GetCategoriesPaginateShortResponse) GetList() []*CategoryShort {
+func (x *GetCategoriesShortPaginateResponse) GetList() []*CategoryShort {
 	if x != nil {
 		return x.List
 	}
 	return nil
 }
 
-func (x *GetCategoriesPaginateShortResponse) GetMeta() *common.PaginateMeta {
+func (x *GetCategoriesShortPaginateResponse) GetMeta() *common.PaginateMeta {
 	if x != nil {
 		return x.Meta
 	}
@@ -1287,7 +1287,7 @@ const file_catalog_categories_proto_rawDesc = "" +
 	"\x1dGetCategoriesPaginateResponse\x12%\n" +
 	"\x04list\x18\x01 \x03(\v2\x11.catalog.CategoryR\x04list\x12(\n" +
 	"\x04meta\x18\x02 \x01(\v2\x14.common.PaginateMetaR\x04meta\"z\n" +
-	"\"GetCategoriesPaginateShortResponse\x12*\n" +
+	"\"GetCategoriesShortPaginateResponse\x12*\n" +
 	"\x04list\x18\x01 \x03(\v2\x16.catalog.CategoryShortR\x04list\x12(\n" +
 	"\x04meta\x18\x02 \x01(\v2\x14.common.PaginateMetaR\x04meta\"L\n" +
 	"\x19GetCategoriesOffsetParams\x12/\n" +
@@ -1337,7 +1337,7 @@ var file_catalog_categories_proto_goTypes = []any{
 	(*UpdateOrderSortToCategoriesParams)(nil),   // 10: catalog.UpdateOrderSortToCategoriesParams
 	(*GetCategoriesPaginateParams)(nil),         // 11: catalog.GetCategoriesPaginateParams
 	(*GetCategoriesPaginateResponse)(nil),       // 12: catalog.GetCategoriesPaginateResponse
-	(*GetCategoriesPaginateShortResponse)(nil),  // 13: catalog.GetCategoriesPaginateShortResponse
+	(*GetCategoriesShortPaginateResponse)(nil),  // 13: catalog.GetCategoriesShortPaginateResponse
 	(*GetCategoriesOffsetParams)(nil),           // 14: catalog.GetCategoriesOffsetParams
 	(*GetCategoriesOffsetResponse)(nil),         // 15: catalog.GetCategoriesOffsetResponse
 	(*GetCategoriesShortOffsetParams)(nil),      // 16: catalog.GetCategoriesShortOffsetParams
@@ -1361,8 +1361,8 @@ var file_catalog_categories_proto_depIdxs = []int32{
 	24, // 5: catalog.GetCategoriesPaginateParams.params:type_name -> common.GetPaginateParams
 	0,  // 6: catalog.GetCategoriesPaginateResponse.list:type_name -> catalog.Category
 	25, // 7: catalog.GetCategoriesPaginateResponse.meta:type_name -> common.PaginateMeta
-	1,  // 8: catalog.GetCategoriesPaginateShortResponse.list:type_name -> catalog.CategoryShort
-	25, // 9: catalog.GetCategoriesPaginateShortResponse.meta:type_name -> common.PaginateMeta
+	1,  // 8: catalog.GetCategoriesShortPaginateResponse.list:type_name -> catalog.CategoryShort
+	25, // 9: catalog.GetCategoriesShortPaginateResponse.meta:type_name -> common.PaginateMeta
 	26, // 10: catalog.GetCategoriesOffsetParams.params:type_name -> common.GetOffsetParams
 	0,  // 11: catalog.GetCategoriesOffsetResponse.list:type_name -> catalog.Category
 	26, // 12: catalog.GetCategoriesShortOffsetParams.params:type_name -> common.GetOffsetParams

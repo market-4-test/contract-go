@@ -23,13 +23,13 @@ const (
 )
 
 type Employee struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Username      string                 `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
-	FirstName     string                 `protobuf:"bytes,3,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	LastName      string                 `protobuf:"bytes,4,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	Email         string                 `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
-	ImageUuid     []byte                 `protobuf:"bytes,6,opt,name=image_uuid,json=imageUuid,proto3,oneof" json:"image_uuid,omitempty"`
+	state     protoimpl.MessageState `protogen:"open.v1"`
+	Id        int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Username  string                 `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
+	FirstName string                 `protobuf:"bytes,3,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName  string                 `protobuf:"bytes,4,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	Email     string                 `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
+	// optional bytes image_uuid = 6;
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	BlockedAt     *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=blocked_at,json=blockedAt,proto3,oneof" json:"blocked_at,omitempty"`
@@ -100,13 +100,6 @@ func (x *Employee) GetEmail() string {
 		return x.Email
 	}
 	return ""
-}
-
-func (x *Employee) GetImageUuid() []byte {
-	if x != nil {
-		return x.ImageUuid
-	}
-	return nil
 }
 
 func (x *Employee) GetCreatedAt() *timestamppb.Timestamp {
@@ -283,8 +276,7 @@ type UpdateEmployeeParams struct {
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	FirstName     string                 `protobuf:"bytes,2,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
 	LastName      string                 `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	Email         string                 `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
-	ImageUuid     []byte                 `protobuf:"bytes,5,opt,name=image_uuid,json=imageUuid,proto3,oneof" json:"image_uuid,omitempty"`
+	Email         string                 `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"` //  optional bytes image_uuid = 5;
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -345,13 +337,6 @@ func (x *UpdateEmployeeParams) GetEmail() string {
 		return x.Email
 	}
 	return ""
-}
-
-func (x *UpdateEmployeeParams) GetImageUuid() []byte {
-	if x != nil {
-		return x.ImageUuid
-	}
-	return nil
 }
 
 type CheckEmployeeAvailableUsernameParams struct {
@@ -446,23 +431,20 @@ var File_space_employees_proto protoreflect.FileDescriptor
 
 const file_space_employees_proto_rawDesc = "" +
 	"\n" +
-	"\x15space/employees.proto\x12\x05space\x1a\x1fgoogle/protobuf/timestamp.proto\"\x80\x03\n" +
+	"\x15space/employees.proto\x12\x05space\x1a\x1fgoogle/protobuf/timestamp.proto\"\xcd\x02\n" +
 	"\bEmployee\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1a\n" +
 	"\busername\x18\x02 \x01(\tR\busername\x12\x1d\n" +
 	"\n" +
 	"first_name\x18\x03 \x01(\tR\tfirstName\x12\x1b\n" +
 	"\tlast_name\x18\x04 \x01(\tR\blastName\x12\x14\n" +
-	"\x05email\x18\x05 \x01(\tR\x05email\x12\"\n" +
-	"\n" +
-	"image_uuid\x18\x06 \x01(\fH\x00R\timageUuid\x88\x01\x01\x129\n" +
+	"\x05email\x18\x05 \x01(\tR\x05email\x129\n" +
 	"\n" +
 	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
 	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12>\n" +
 	"\n" +
-	"blocked_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampH\x01R\tblockedAt\x88\x01\x01B\r\n" +
-	"\v_image_uuidB\r\n" +
+	"blocked_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampH\x00R\tblockedAt\x88\x01\x01B\r\n" +
 	"\v_blocked_at\"\x14\n" +
 	"\x12GetEmployeesParams\";\n" +
 	"\x14GetEmployeesResponse\x12#\n" +
@@ -472,16 +454,13 @@ const file_space_employees_proto_rawDesc = "" +
 	"\n" +
 	"first_name\x18\x03 \x01(\tR\tfirstName\x12\x1b\n" +
 	"\tlast_name\x18\x04 \x01(\tR\blastName\x12\x14\n" +
-	"\x05email\x18\x05 \x01(\tR\x05email\"\xab\x01\n" +
+	"\x05email\x18\x05 \x01(\tR\x05email\"x\n" +
 	"\x14UpdateEmployeeParams\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1d\n" +
 	"\n" +
 	"first_name\x18\x02 \x01(\tR\tfirstName\x12\x1b\n" +
 	"\tlast_name\x18\x03 \x01(\tR\blastName\x12\x14\n" +
-	"\x05email\x18\x04 \x01(\tR\x05email\x12\"\n" +
-	"\n" +
-	"image_uuid\x18\x05 \x01(\fH\x00R\timageUuid\x88\x01\x01B\r\n" +
-	"\v_image_uuid\"B\n" +
+	"\x05email\x18\x04 \x01(\tR\x05email\"B\n" +
 	"$CheckEmployeeAvailableUsernameParams\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\"%\n" +
 	"\x13BlockEmployeeParams\x12\x0e\n" +
@@ -528,7 +507,6 @@ func file_space_employees_proto_init() {
 		return
 	}
 	file_space_employees_proto_msgTypes[0].OneofWrappers = []any{}
-	file_space_employees_proto_msgTypes[4].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

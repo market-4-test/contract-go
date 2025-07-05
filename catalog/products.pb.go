@@ -265,8 +265,6 @@ func (x *ProductMeta) GetBrandId() int32 {
 type Product struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Meta          *ProductMeta           `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
-	Images        []*ProductImage        `protobuf:"bytes,2,rep,name=images,proto3" json:"images,omitempty"`
-	Stocks        []*Stock               `protobuf:"bytes,3,rep,name=stocks,proto3" json:"stocks,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -308,24 +306,9 @@ func (x *Product) GetMeta() *ProductMeta {
 	return nil
 }
 
-func (x *Product) GetImages() []*ProductImage {
-	if x != nil {
-		return x.Images
-	}
-	return nil
-}
-
-func (x *Product) GetStocks() []*Stock {
-	if x != nil {
-		return x.Stocks
-	}
-	return nil
-}
-
 type ProductShort struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Meta          *ProductMeta           `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
-	Image         []byte                 `protobuf:"bytes,2,opt,name=image,proto3" json:"image,omitempty"`
+	Meta          *ProductMeta           `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"` //  bytes image = 2;
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -363,13 +346,6 @@ func (*ProductShort) Descriptor() ([]byte, []int) {
 func (x *ProductShort) GetMeta() *ProductMeta {
 	if x != nil {
 		return x.Meta
-	}
-	return nil
-}
-
-func (x *ProductShort) GetImage() []byte {
-	if x != nil {
-		return x.Image
 	}
 	return nil
 }
@@ -2253,14 +2229,11 @@ const file_catalog_products_proto_rawDesc = "" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x14\n" +
 	"\x05price\x18\x05 \x01(\rR\x05price\x12\x1e\n" +
 	"\bbrand_id\x18\x06 \x01(\x05H\x00R\abrandId\x88\x01\x01B\v\n" +
-	"\t_brand_id\"\x8a\x01\n" +
+	"\t_brand_id\"3\n" +
 	"\aProduct\x12(\n" +
-	"\x04meta\x18\x01 \x01(\v2\x14.catalog.ProductMetaR\x04meta\x12-\n" +
-	"\x06images\x18\x02 \x03(\v2\x15.catalog.ProductImageR\x06images\x12&\n" +
-	"\x06stocks\x18\x03 \x03(\v2\x0e.catalog.StockR\x06stocks\"N\n" +
+	"\x04meta\x18\x01 \x01(\v2\x14.catalog.ProductMetaR\x04meta\"8\n" +
 	"\fProductShort\x12(\n" +
-	"\x04meta\x18\x01 \x01(\v2\x14.catalog.ProductMetaR\x04meta\x12\x14\n" +
-	"\x05image\x18\x02 \x01(\fR\x05image\"\xcf\x01\n" +
+	"\x04meta\x18\x01 \x01(\v2\x14.catalog.ProductMetaR\x04meta\"\xcf\x01\n" +
 	"\x0fGetProductsMeta\x123\n" +
 	"\x06status\x18\x01 \x01(\x0e2\x16.catalog.ProductStatusH\x00R\x06status\x88\x01\x01\x12\x19\n" +
 	"\x05query\x18\x02 \x01(\tH\x01R\x05query\x88\x01\x01\x12!\n" +
@@ -2438,44 +2411,42 @@ var file_catalog_products_proto_goTypes = []any{
 }
 var file_catalog_products_proto_depIdxs = []int32{
 	3,  // 0: catalog.Product.meta:type_name -> catalog.ProductMeta
-	2,  // 1: catalog.Product.images:type_name -> catalog.ProductImage
-	1,  // 2: catalog.Product.stocks:type_name -> catalog.Stock
-	3,  // 3: catalog.ProductShort.meta:type_name -> catalog.ProductMeta
-	0,  // 4: catalog.GetProductsMeta.status:type_name -> catalog.ProductStatus
-	43, // 5: catalog.GetProductsPaginateParams.params:type_name -> common.GetPaginateParams
-	6,  // 6: catalog.GetProductsPaginateParams.meta:type_name -> catalog.GetProductsMeta
-	43, // 7: catalog.GetProductsShortPaginateParams.params:type_name -> common.GetPaginateParams
-	6,  // 8: catalog.GetProductsShortPaginateParams.meta:type_name -> catalog.GetProductsMeta
-	44, // 9: catalog.GetProductsOffsetParams.params:type_name -> common.GetOffsetParams
-	0,  // 10: catalog.GetProductsOffsetParams.status:type_name -> catalog.ProductStatus
-	6,  // 11: catalog.GetProductsOffsetParams.meta:type_name -> catalog.GetProductsMeta
-	44, // 12: catalog.GetProductsShortOffsetParams.params:type_name -> common.GetOffsetParams
-	6,  // 13: catalog.GetProductsShortOffsetParams.meta:type_name -> catalog.GetProductsMeta
-	4,  // 14: catalog.GetProductsPaginateResponse.list:type_name -> catalog.Product
-	45, // 15: catalog.GetProductsPaginateResponse.meta:type_name -> common.PaginateMeta
-	5,  // 16: catalog.GetProductsShortPaginateResponse.list:type_name -> catalog.ProductShort
-	45, // 17: catalog.GetProductsShortPaginateResponse.meta:type_name -> common.PaginateMeta
-	4,  // 18: catalog.GetProductsOffsetResponse.list:type_name -> catalog.Product
-	5,  // 19: catalog.GetProductsShortOffsetResponse.list:type_name -> catalog.ProductShort
-	4,  // 20: catalog.GetProductsResponse.list:type_name -> catalog.Product
-	5,  // 21: catalog.GetProductsShortResponse.list:type_name -> catalog.ProductShort
-	19, // 22: catalog.CreateProductParams.data:type_name -> catalog.UpsertProductMetaParams
-	19, // 23: catalog.UpdateProductMetaParams.data:type_name -> catalog.UpsertProductMetaParams
-	0,  // 24: catalog.UpdateProductsStatusParams.status:type_name -> catalog.ProductStatus
-	23, // 25: catalog.UpdateProductsStatusResponse.statuses:type_name -> catalog.UpdateProductsStatus
-	26, // 26: catalog.UpdateProductsStocksParams.stocks:type_name -> catalog.UpdateProductsStock
-	28, // 27: catalog.UpdateProductsStocksResponse.statuses:type_name -> catalog.UpdateProductsStockStatus
-	30, // 28: catalog.UpdateProductsPricesParams.prices:type_name -> catalog.UpdateProductsPrice
-	32, // 29: catalog.UpdateProductsPricesResponse.statuses:type_name -> catalog.UpdateProductsPriceStatus
-	35, // 30: catalog.ToggleAttachProductsToCategoryParams.list:type_name -> catalog.ToggleAttachProductsToCategories
-	37, // 31: catalog.CommonToggleAttachProductsResponse.statuses:type_name -> catalog.CommonToggleAttachProductStatus
-	39, // 32: catalog.ToggleAttachProductsToBrandsParams.list:type_name -> catalog.ToggleAttachProductsToBrands
-	39, // 33: catalog.ToggleAttachProductsToTagsParams.list:type_name -> catalog.ToggleAttachProductsToBrands
-	34, // [34:34] is the sub-list for method output_type
-	34, // [34:34] is the sub-list for method input_type
-	34, // [34:34] is the sub-list for extension type_name
-	34, // [34:34] is the sub-list for extension extendee
-	0,  // [0:34] is the sub-list for field type_name
+	3,  // 1: catalog.ProductShort.meta:type_name -> catalog.ProductMeta
+	0,  // 2: catalog.GetProductsMeta.status:type_name -> catalog.ProductStatus
+	43, // 3: catalog.GetProductsPaginateParams.params:type_name -> common.GetPaginateParams
+	6,  // 4: catalog.GetProductsPaginateParams.meta:type_name -> catalog.GetProductsMeta
+	43, // 5: catalog.GetProductsShortPaginateParams.params:type_name -> common.GetPaginateParams
+	6,  // 6: catalog.GetProductsShortPaginateParams.meta:type_name -> catalog.GetProductsMeta
+	44, // 7: catalog.GetProductsOffsetParams.params:type_name -> common.GetOffsetParams
+	0,  // 8: catalog.GetProductsOffsetParams.status:type_name -> catalog.ProductStatus
+	6,  // 9: catalog.GetProductsOffsetParams.meta:type_name -> catalog.GetProductsMeta
+	44, // 10: catalog.GetProductsShortOffsetParams.params:type_name -> common.GetOffsetParams
+	6,  // 11: catalog.GetProductsShortOffsetParams.meta:type_name -> catalog.GetProductsMeta
+	4,  // 12: catalog.GetProductsPaginateResponse.list:type_name -> catalog.Product
+	45, // 13: catalog.GetProductsPaginateResponse.meta:type_name -> common.PaginateMeta
+	5,  // 14: catalog.GetProductsShortPaginateResponse.list:type_name -> catalog.ProductShort
+	45, // 15: catalog.GetProductsShortPaginateResponse.meta:type_name -> common.PaginateMeta
+	4,  // 16: catalog.GetProductsOffsetResponse.list:type_name -> catalog.Product
+	5,  // 17: catalog.GetProductsShortOffsetResponse.list:type_name -> catalog.ProductShort
+	4,  // 18: catalog.GetProductsResponse.list:type_name -> catalog.Product
+	5,  // 19: catalog.GetProductsShortResponse.list:type_name -> catalog.ProductShort
+	19, // 20: catalog.CreateProductParams.data:type_name -> catalog.UpsertProductMetaParams
+	19, // 21: catalog.UpdateProductMetaParams.data:type_name -> catalog.UpsertProductMetaParams
+	0,  // 22: catalog.UpdateProductsStatusParams.status:type_name -> catalog.ProductStatus
+	23, // 23: catalog.UpdateProductsStatusResponse.statuses:type_name -> catalog.UpdateProductsStatus
+	26, // 24: catalog.UpdateProductsStocksParams.stocks:type_name -> catalog.UpdateProductsStock
+	28, // 25: catalog.UpdateProductsStocksResponse.statuses:type_name -> catalog.UpdateProductsStockStatus
+	30, // 26: catalog.UpdateProductsPricesParams.prices:type_name -> catalog.UpdateProductsPrice
+	32, // 27: catalog.UpdateProductsPricesResponse.statuses:type_name -> catalog.UpdateProductsPriceStatus
+	35, // 28: catalog.ToggleAttachProductsToCategoryParams.list:type_name -> catalog.ToggleAttachProductsToCategories
+	37, // 29: catalog.CommonToggleAttachProductsResponse.statuses:type_name -> catalog.CommonToggleAttachProductStatus
+	39, // 30: catalog.ToggleAttachProductsToBrandsParams.list:type_name -> catalog.ToggleAttachProductsToBrands
+	39, // 31: catalog.ToggleAttachProductsToTagsParams.list:type_name -> catalog.ToggleAttachProductsToBrands
+	32, // [32:32] is the sub-list for method output_type
+	32, // [32:32] is the sub-list for method input_type
+	32, // [32:32] is the sub-list for extension type_name
+	32, // [32:32] is the sub-list for extension extendee
+	0,  // [0:32] is the sub-list for field type_name
 }
 
 func init() { file_catalog_products_proto_init() }

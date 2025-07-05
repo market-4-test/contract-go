@@ -24,12 +24,12 @@ const (
 )
 
 type Brand struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Slug          string                 `protobuf:"bytes,3,opt,name=slug,proto3" json:"slug,omitempty"`
-	IsActive      bool                   `protobuf:"varint,4,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
-	ImageUuid     []byte                 `protobuf:"bytes,5,opt,name=image_uuid,json=imageUuid,proto3,oneof" json:"image_uuid,omitempty"`
+	state    protoimpl.MessageState `protogen:"open.v1"`
+	Id       int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name     string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Slug     string                 `protobuf:"bytes,3,opt,name=slug,proto3" json:"slug,omitempty"`
+	IsActive bool                   `protobuf:"varint,4,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
+	// optional bytes image_uuid = 5;
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -92,13 +92,6 @@ func (x *Brand) GetIsActive() bool {
 		return x.IsActive
 	}
 	return false
-}
-
-func (x *Brand) GetImageUuid() []byte {
-	if x != nil {
-		return x.ImageUuid
-	}
-	return nil
 }
 
 func (x *Brand) GetCreatedAt() *timestamppb.Timestamp {
@@ -179,8 +172,7 @@ type UpsertBrandParams struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Slug          string                 `protobuf:"bytes,3,opt,name=slug,proto3" json:"slug,omitempty"`
-	IsActive      bool                   `protobuf:"varint,4,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
-	ImageUuid     []byte                 `protobuf:"bytes,5,opt,name=image_uuid,json=imageUuid,proto3,oneof" json:"image_uuid,omitempty"`
+	IsActive      bool                   `protobuf:"varint,4,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"` //  optional bytes image_uuid = 5;
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -234,13 +226,6 @@ func (x *UpsertBrandParams) GetIsActive() bool {
 		return x.IsActive
 	}
 	return false
-}
-
-func (x *UpsertBrandParams) GetImageUuid() []byte {
-	if x != nil {
-		return x.ImageUuid
-	}
-	return nil
 }
 
 type CreateBrandParams struct {
@@ -391,58 +376,6 @@ func (x *UpdateActiveToBrands) GetIsActive() bool {
 	return false
 }
 
-type UpdateImageToBrand struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ImageUuid     []byte                 `protobuf:"bytes,5,opt,name=image_uuid,json=imageUuid,proto3" json:"image_uuid,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateImageToBrand) Reset() {
-	*x = UpdateImageToBrand{}
-	mi := &file_catalog_brands_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateImageToBrand) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateImageToBrand) ProtoMessage() {}
-
-func (x *UpdateImageToBrand) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_brands_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateImageToBrand.ProtoReflect.Descriptor instead.
-func (*UpdateImageToBrand) Descriptor() ([]byte, []int) {
-	return file_catalog_brands_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *UpdateImageToBrand) GetId() int32 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *UpdateImageToBrand) GetImageUuid() []byte {
-	if x != nil {
-		return x.ImageUuid
-	}
-	return nil
-}
-
 type GetBrandsPaginateParams struct {
 	state         protoimpl.MessageState    `protogen:"open.v1"`
 	Params        *common.GetPaginateParams `protobuf:"bytes,1,opt,name=params,proto3" json:"params,omitempty"`
@@ -452,7 +385,7 @@ type GetBrandsPaginateParams struct {
 
 func (x *GetBrandsPaginateParams) Reset() {
 	*x = GetBrandsPaginateParams{}
-	mi := &file_catalog_brands_proto_msgTypes[7]
+	mi := &file_catalog_brands_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -464,7 +397,7 @@ func (x *GetBrandsPaginateParams) String() string {
 func (*GetBrandsPaginateParams) ProtoMessage() {}
 
 func (x *GetBrandsPaginateParams) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_brands_proto_msgTypes[7]
+	mi := &file_catalog_brands_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -477,7 +410,7 @@ func (x *GetBrandsPaginateParams) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBrandsPaginateParams.ProtoReflect.Descriptor instead.
 func (*GetBrandsPaginateParams) Descriptor() ([]byte, []int) {
-	return file_catalog_brands_proto_rawDescGZIP(), []int{7}
+	return file_catalog_brands_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetBrandsPaginateParams) GetParams() *common.GetPaginateParams {
@@ -497,7 +430,7 @@ type GetBrandsPaginateResponse struct {
 
 func (x *GetBrandsPaginateResponse) Reset() {
 	*x = GetBrandsPaginateResponse{}
-	mi := &file_catalog_brands_proto_msgTypes[8]
+	mi := &file_catalog_brands_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -509,7 +442,7 @@ func (x *GetBrandsPaginateResponse) String() string {
 func (*GetBrandsPaginateResponse) ProtoMessage() {}
 
 func (x *GetBrandsPaginateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_brands_proto_msgTypes[8]
+	mi := &file_catalog_brands_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -522,7 +455,7 @@ func (x *GetBrandsPaginateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBrandsPaginateResponse.ProtoReflect.Descriptor instead.
 func (*GetBrandsPaginateResponse) Descriptor() ([]byte, []int) {
-	return file_catalog_brands_proto_rawDescGZIP(), []int{8}
+	return file_catalog_brands_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetBrandsPaginateResponse) GetList() []*Brand {
@@ -549,7 +482,7 @@ type GetBrandsShortPaginateResponse struct {
 
 func (x *GetBrandsShortPaginateResponse) Reset() {
 	*x = GetBrandsShortPaginateResponse{}
-	mi := &file_catalog_brands_proto_msgTypes[9]
+	mi := &file_catalog_brands_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -561,7 +494,7 @@ func (x *GetBrandsShortPaginateResponse) String() string {
 func (*GetBrandsShortPaginateResponse) ProtoMessage() {}
 
 func (x *GetBrandsShortPaginateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_brands_proto_msgTypes[9]
+	mi := &file_catalog_brands_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -574,7 +507,7 @@ func (x *GetBrandsShortPaginateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBrandsShortPaginateResponse.ProtoReflect.Descriptor instead.
 func (*GetBrandsShortPaginateResponse) Descriptor() ([]byte, []int) {
-	return file_catalog_brands_proto_rawDescGZIP(), []int{9}
+	return file_catalog_brands_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetBrandsShortPaginateResponse) GetList() []*BrandShort {
@@ -600,7 +533,7 @@ type GetOffsetBrandsParams struct {
 
 func (x *GetOffsetBrandsParams) Reset() {
 	*x = GetOffsetBrandsParams{}
-	mi := &file_catalog_brands_proto_msgTypes[10]
+	mi := &file_catalog_brands_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -612,7 +545,7 @@ func (x *GetOffsetBrandsParams) String() string {
 func (*GetOffsetBrandsParams) ProtoMessage() {}
 
 func (x *GetOffsetBrandsParams) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_brands_proto_msgTypes[10]
+	mi := &file_catalog_brands_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -625,7 +558,7 @@ func (x *GetOffsetBrandsParams) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetOffsetBrandsParams.ProtoReflect.Descriptor instead.
 func (*GetOffsetBrandsParams) Descriptor() ([]byte, []int) {
-	return file_catalog_brands_proto_rawDescGZIP(), []int{10}
+	return file_catalog_brands_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *GetOffsetBrandsParams) GetParams() *common.GetOffsetParams {
@@ -644,7 +577,7 @@ type GetOffsetBrandsShortParams struct {
 
 func (x *GetOffsetBrandsShortParams) Reset() {
 	*x = GetOffsetBrandsShortParams{}
-	mi := &file_catalog_brands_proto_msgTypes[11]
+	mi := &file_catalog_brands_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -656,7 +589,7 @@ func (x *GetOffsetBrandsShortParams) String() string {
 func (*GetOffsetBrandsShortParams) ProtoMessage() {}
 
 func (x *GetOffsetBrandsShortParams) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_brands_proto_msgTypes[11]
+	mi := &file_catalog_brands_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -669,7 +602,7 @@ func (x *GetOffsetBrandsShortParams) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetOffsetBrandsShortParams.ProtoReflect.Descriptor instead.
 func (*GetOffsetBrandsShortParams) Descriptor() ([]byte, []int) {
-	return file_catalog_brands_proto_rawDescGZIP(), []int{11}
+	return file_catalog_brands_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetOffsetBrandsShortParams) GetParams() *common.GetOffsetParams {
@@ -688,7 +621,7 @@ type GetBrandsOffsetResponse struct {
 
 func (x *GetBrandsOffsetResponse) Reset() {
 	*x = GetBrandsOffsetResponse{}
-	mi := &file_catalog_brands_proto_msgTypes[12]
+	mi := &file_catalog_brands_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -700,7 +633,7 @@ func (x *GetBrandsOffsetResponse) String() string {
 func (*GetBrandsOffsetResponse) ProtoMessage() {}
 
 func (x *GetBrandsOffsetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_brands_proto_msgTypes[12]
+	mi := &file_catalog_brands_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -713,7 +646,7 @@ func (x *GetBrandsOffsetResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBrandsOffsetResponse.ProtoReflect.Descriptor instead.
 func (*GetBrandsOffsetResponse) Descriptor() ([]byte, []int) {
-	return file_catalog_brands_proto_rawDescGZIP(), []int{12}
+	return file_catalog_brands_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetBrandsOffsetResponse) GetList() []*Brand {
@@ -732,7 +665,7 @@ type GetBrandsShortOffsetResponse struct {
 
 func (x *GetBrandsShortOffsetResponse) Reset() {
 	*x = GetBrandsShortOffsetResponse{}
-	mi := &file_catalog_brands_proto_msgTypes[13]
+	mi := &file_catalog_brands_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -744,7 +677,7 @@ func (x *GetBrandsShortOffsetResponse) String() string {
 func (*GetBrandsShortOffsetResponse) ProtoMessage() {}
 
 func (x *GetBrandsShortOffsetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_brands_proto_msgTypes[13]
+	mi := &file_catalog_brands_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -757,7 +690,7 @@ func (x *GetBrandsShortOffsetResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBrandsShortOffsetResponse.ProtoReflect.Descriptor instead.
 func (*GetBrandsShortOffsetResponse) Descriptor() ([]byte, []int) {
-	return file_catalog_brands_proto_rawDescGZIP(), []int{13}
+	return file_catalog_brands_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GetBrandsShortOffsetResponse) GetList() []*BrandShort {
@@ -776,7 +709,7 @@ type GetBrandByIdParams struct {
 
 func (x *GetBrandByIdParams) Reset() {
 	*x = GetBrandByIdParams{}
-	mi := &file_catalog_brands_proto_msgTypes[14]
+	mi := &file_catalog_brands_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -788,7 +721,7 @@ func (x *GetBrandByIdParams) String() string {
 func (*GetBrandByIdParams) ProtoMessage() {}
 
 func (x *GetBrandByIdParams) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_brands_proto_msgTypes[14]
+	mi := &file_catalog_brands_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -801,7 +734,7 @@ func (x *GetBrandByIdParams) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBrandByIdParams.ProtoReflect.Descriptor instead.
 func (*GetBrandByIdParams) Descriptor() ([]byte, []int) {
-	return file_catalog_brands_proto_rawDescGZIP(), []int{14}
+	return file_catalog_brands_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetBrandByIdParams) GetId() int32 {
@@ -821,7 +754,7 @@ type StatusBrand struct {
 
 func (x *StatusBrand) Reset() {
 	*x = StatusBrand{}
-	mi := &file_catalog_brands_proto_msgTypes[15]
+	mi := &file_catalog_brands_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -833,7 +766,7 @@ func (x *StatusBrand) String() string {
 func (*StatusBrand) ProtoMessage() {}
 
 func (x *StatusBrand) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_brands_proto_msgTypes[15]
+	mi := &file_catalog_brands_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -846,7 +779,7 @@ func (x *StatusBrand) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StatusBrand.ProtoReflect.Descriptor instead.
 func (*StatusBrand) Descriptor() ([]byte, []int) {
-	return file_catalog_brands_proto_rawDescGZIP(), []int{15}
+	return file_catalog_brands_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *StatusBrand) GetId() int32 {
@@ -872,7 +805,7 @@ type DeleteBrandsParams struct {
 
 func (x *DeleteBrandsParams) Reset() {
 	*x = DeleteBrandsParams{}
-	mi := &file_catalog_brands_proto_msgTypes[16]
+	mi := &file_catalog_brands_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -884,7 +817,7 @@ func (x *DeleteBrandsParams) String() string {
 func (*DeleteBrandsParams) ProtoMessage() {}
 
 func (x *DeleteBrandsParams) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_brands_proto_msgTypes[16]
+	mi := &file_catalog_brands_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -897,7 +830,7 @@ func (x *DeleteBrandsParams) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteBrandsParams.ProtoReflect.Descriptor instead.
 func (*DeleteBrandsParams) Descriptor() ([]byte, []int) {
-	return file_catalog_brands_proto_rawDescGZIP(), []int{16}
+	return file_catalog_brands_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *DeleteBrandsParams) GetIds() []int32 {
@@ -916,7 +849,7 @@ type DeleteBrandsResponse struct {
 
 func (x *DeleteBrandsResponse) Reset() {
 	*x = DeleteBrandsResponse{}
-	mi := &file_catalog_brands_proto_msgTypes[17]
+	mi := &file_catalog_brands_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -928,7 +861,7 @@ func (x *DeleteBrandsResponse) String() string {
 func (*DeleteBrandsResponse) ProtoMessage() {}
 
 func (x *DeleteBrandsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_brands_proto_msgTypes[17]
+	mi := &file_catalog_brands_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -941,7 +874,7 @@ func (x *DeleteBrandsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteBrandsResponse.ProtoReflect.Descriptor instead.
 func (*DeleteBrandsResponse) Descriptor() ([]byte, []int) {
-	return file_catalog_brands_proto_rawDescGZIP(), []int{17}
+	return file_catalog_brands_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *DeleteBrandsResponse) GetList() *StatusBrand {
@@ -955,31 +888,25 @@ var File_catalog_brands_proto protoreflect.FileDescriptor
 
 const file_catalog_brands_proto_rawDesc = "" +
 	"\n" +
-	"\x14catalog/brands.proto\x12\acatalog\x1a\x13common/common.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x85\x02\n" +
+	"\x14catalog/brands.proto\x12\acatalog\x1a\x13common/common.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd2\x01\n" +
 	"\x05Brand\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04slug\x18\x03 \x01(\tR\x04slug\x12\x1b\n" +
-	"\tis_active\x18\x04 \x01(\bR\bisActive\x12\"\n" +
-	"\n" +
-	"image_uuid\x18\x05 \x01(\fH\x00R\timageUuid\x88\x01\x01\x129\n" +
+	"\tis_active\x18\x04 \x01(\bR\bisActive\x129\n" +
 	"\n" +
 	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB\r\n" +
-	"\v_image_uuid\"D\n" +
+	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"D\n" +
 	"\n" +
 	"BrandShort\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
-	"\x04slug\x18\x03 \x01(\tR\x04slug\"\x8b\x01\n" +
+	"\x04slug\x18\x03 \x01(\tR\x04slug\"X\n" +
 	"\x11UpsertBrandParams\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04slug\x18\x03 \x01(\tR\x04slug\x12\x1b\n" +
-	"\tis_active\x18\x04 \x01(\bR\bisActive\x12\"\n" +
-	"\n" +
-	"image_uuid\x18\x05 \x01(\fH\x00R\timageUuid\x88\x01\x01B\r\n" +
-	"\v_image_uuid\"C\n" +
+	"\tis_active\x18\x04 \x01(\bR\bisActive\"C\n" +
 	"\x11CreateBrandParams\x12.\n" +
 	"\x04data\x18\x01 \x01(\v2\x1a.catalog.UpsertBrandParamsR\x04data\"S\n" +
 	"\x11UpdateBrandParams\x12\x0e\n" +
@@ -987,11 +914,7 @@ const file_catalog_brands_proto_rawDesc = "" +
 	"\x04data\x18\x02 \x01(\v2\x1a.catalog.UpsertBrandParamsR\x04data\"E\n" +
 	"\x14UpdateActiveToBrands\x12\x10\n" +
 	"\x03ids\x18\x01 \x03(\x05R\x03ids\x12\x1b\n" +
-	"\tis_active\x18\x02 \x01(\bR\bisActive\"C\n" +
-	"\x12UpdateImageToBrand\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1d\n" +
-	"\n" +
-	"image_uuid\x18\x05 \x01(\fR\timageUuid\"L\n" +
+	"\tis_active\x18\x02 \x01(\bR\bisActive\"L\n" +
 	"\x17GetBrandsPaginateParams\x121\n" +
 	"\x06params\x18\x01 \x01(\v2\x19.common.GetPaginateParamsR\x06params\"i\n" +
 	"\x19GetBrandsPaginateResponse\x12\"\n" +
@@ -1030,7 +953,7 @@ func file_catalog_brands_proto_rawDescGZIP() []byte {
 	return file_catalog_brands_proto_rawDescData
 }
 
-var file_catalog_brands_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_catalog_brands_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_catalog_brands_proto_goTypes = []any{
 	(*Brand)(nil),                          // 0: catalog.Brand
 	(*BrandShort)(nil),                     // 1: catalog.BrandShort
@@ -1038,38 +961,37 @@ var file_catalog_brands_proto_goTypes = []any{
 	(*CreateBrandParams)(nil),              // 3: catalog.CreateBrandParams
 	(*UpdateBrandParams)(nil),              // 4: catalog.UpdateBrandParams
 	(*UpdateActiveToBrands)(nil),           // 5: catalog.UpdateActiveToBrands
-	(*UpdateImageToBrand)(nil),             // 6: catalog.UpdateImageToBrand
-	(*GetBrandsPaginateParams)(nil),        // 7: catalog.GetBrandsPaginateParams
-	(*GetBrandsPaginateResponse)(nil),      // 8: catalog.GetBrandsPaginateResponse
-	(*GetBrandsShortPaginateResponse)(nil), // 9: catalog.GetBrandsShortPaginateResponse
-	(*GetOffsetBrandsParams)(nil),          // 10: catalog.GetOffsetBrandsParams
-	(*GetOffsetBrandsShortParams)(nil),     // 11: catalog.GetOffsetBrandsShortParams
-	(*GetBrandsOffsetResponse)(nil),        // 12: catalog.GetBrandsOffsetResponse
-	(*GetBrandsShortOffsetResponse)(nil),   // 13: catalog.GetBrandsShortOffsetResponse
-	(*GetBrandByIdParams)(nil),             // 14: catalog.GetBrandByIdParams
-	(*StatusBrand)(nil),                    // 15: catalog.StatusBrand
-	(*DeleteBrandsParams)(nil),             // 16: catalog.DeleteBrandsParams
-	(*DeleteBrandsResponse)(nil),           // 17: catalog.DeleteBrandsResponse
-	(*timestamppb.Timestamp)(nil),          // 18: google.protobuf.Timestamp
-	(*common.GetPaginateParams)(nil),       // 19: common.GetPaginateParams
-	(*common.PaginateMeta)(nil),            // 20: common.PaginateMeta
-	(*common.GetOffsetParams)(nil),         // 21: common.GetOffsetParams
+	(*GetBrandsPaginateParams)(nil),        // 6: catalog.GetBrandsPaginateParams
+	(*GetBrandsPaginateResponse)(nil),      // 7: catalog.GetBrandsPaginateResponse
+	(*GetBrandsShortPaginateResponse)(nil), // 8: catalog.GetBrandsShortPaginateResponse
+	(*GetOffsetBrandsParams)(nil),          // 9: catalog.GetOffsetBrandsParams
+	(*GetOffsetBrandsShortParams)(nil),     // 10: catalog.GetOffsetBrandsShortParams
+	(*GetBrandsOffsetResponse)(nil),        // 11: catalog.GetBrandsOffsetResponse
+	(*GetBrandsShortOffsetResponse)(nil),   // 12: catalog.GetBrandsShortOffsetResponse
+	(*GetBrandByIdParams)(nil),             // 13: catalog.GetBrandByIdParams
+	(*StatusBrand)(nil),                    // 14: catalog.StatusBrand
+	(*DeleteBrandsParams)(nil),             // 15: catalog.DeleteBrandsParams
+	(*DeleteBrandsResponse)(nil),           // 16: catalog.DeleteBrandsResponse
+	(*timestamppb.Timestamp)(nil),          // 17: google.protobuf.Timestamp
+	(*common.GetPaginateParams)(nil),       // 18: common.GetPaginateParams
+	(*common.PaginateMeta)(nil),            // 19: common.PaginateMeta
+	(*common.GetOffsetParams)(nil),         // 20: common.GetOffsetParams
 }
 var file_catalog_brands_proto_depIdxs = []int32{
-	18, // 0: catalog.Brand.created_at:type_name -> google.protobuf.Timestamp
-	18, // 1: catalog.Brand.updated_at:type_name -> google.protobuf.Timestamp
+	17, // 0: catalog.Brand.created_at:type_name -> google.protobuf.Timestamp
+	17, // 1: catalog.Brand.updated_at:type_name -> google.protobuf.Timestamp
 	2,  // 2: catalog.CreateBrandParams.data:type_name -> catalog.UpsertBrandParams
 	2,  // 3: catalog.UpdateBrandParams.data:type_name -> catalog.UpsertBrandParams
-	19, // 4: catalog.GetBrandsPaginateParams.params:type_name -> common.GetPaginateParams
+	18, // 4: catalog.GetBrandsPaginateParams.params:type_name -> common.GetPaginateParams
 	0,  // 5: catalog.GetBrandsPaginateResponse.list:type_name -> catalog.Brand
-	20, // 6: catalog.GetBrandsPaginateResponse.meta:type_name -> common.PaginateMeta
+	19, // 6: catalog.GetBrandsPaginateResponse.meta:type_name -> common.PaginateMeta
 	1,  // 7: catalog.GetBrandsShortPaginateResponse.list:type_name -> catalog.BrandShort
-	20, // 8: catalog.GetBrandsShortPaginateResponse.meta:type_name -> common.PaginateMeta
-	21, // 9: catalog.GetOffsetBrandsParams.params:type_name -> common.GetOffsetParams
-	21, // 10: catalog.GetOffsetBrandsShortParams.params:type_name -> common.GetOffsetParams
+	19, // 8: catalog.GetBrandsShortPaginateResponse.meta:type_name -> common.PaginateMeta
+	20, // 9: catalog.GetOffsetBrandsParams.params:type_name -> common.GetOffsetParams
+	20, // 10: catalog.GetOffsetBrandsShortParams.params:type_name -> common.GetOffsetParams
 	0,  // 11: catalog.GetBrandsOffsetResponse.list:type_name -> catalog.Brand
 	1,  // 12: catalog.GetBrandsShortOffsetResponse.list:type_name -> catalog.BrandShort
-	15, // 13: catalog.DeleteBrandsResponse.list:type_name -> catalog.StatusBrand
+	14, // 13: catalog.DeleteBrandsResponse.list:type_name -> catalog.StatusBrand
 	14, // [14:14] is the sub-list for method output_type
 	14, // [14:14] is the sub-list for method input_type
 	14, // [14:14] is the sub-list for extension type_name
@@ -1082,15 +1004,13 @@ func file_catalog_brands_proto_init() {
 	if File_catalog_brands_proto != nil {
 		return
 	}
-	file_catalog_brands_proto_msgTypes[0].OneofWrappers = []any{}
-	file_catalog_brands_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_catalog_brands_proto_rawDesc), len(file_catalog_brands_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   18,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

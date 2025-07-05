@@ -24,14 +24,14 @@ const (
 )
 
 type Category struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ParentId      *int32                 `protobuf:"varint,2,opt,name=parent_id,json=parentId,proto3,oneof" json:"parent_id,omitempty"`
-	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Slug          string                 `protobuf:"bytes,4,opt,name=slug,proto3" json:"slug,omitempty"`
-	IsActive      bool                   `protobuf:"varint,5,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
-	OrderSort     int32                  `protobuf:"varint,6,opt,name=order_sort,json=orderSort,proto3" json:"order_sort,omitempty"`
-	ImageUuid     []byte                 `protobuf:"bytes,7,opt,name=image_uuid,json=imageUuid,proto3,oneof" json:"image_uuid,omitempty"`
+	state     protoimpl.MessageState `protogen:"open.v1"`
+	Id        int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	ParentId  *int32                 `protobuf:"varint,2,opt,name=parent_id,json=parentId,proto3,oneof" json:"parent_id,omitempty"`
+	Name      string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Slug      string                 `protobuf:"bytes,4,opt,name=slug,proto3" json:"slug,omitempty"`
+	IsActive  bool                   `protobuf:"varint,5,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
+	OrderSort int32                  `protobuf:"varint,6,opt,name=order_sort,json=orderSort,proto3" json:"order_sort,omitempty"`
+	// optional bytes image_uuid = 7;
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -110,13 +110,6 @@ func (x *Category) GetOrderSort() int32 {
 	return 0
 }
 
-func (x *Category) GetImageUuid() []byte {
-	if x != nil {
-		return x.ImageUuid
-	}
-	return nil
-}
-
 func (x *Category) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
@@ -135,8 +128,7 @@ type CategoryShort struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Slug          string                 `protobuf:"bytes,3,opt,name=slug,proto3" json:"slug,omitempty"`
-	ImageUuid     []byte                 `protobuf:"bytes,4,opt,name=image_uuid,json=imageUuid,proto3,oneof" json:"image_uuid,omitempty"`
+	Slug          string                 `protobuf:"bytes,3,opt,name=slug,proto3" json:"slug,omitempty"` //  optional bytes image_uuid = 4;
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -192,20 +184,12 @@ func (x *CategoryShort) GetSlug() string {
 	return ""
 }
 
-func (x *CategoryShort) GetImageUuid() []byte {
-	if x != nil {
-		return x.ImageUuid
-	}
-	return nil
-}
-
 type UpsertCategoryParams struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ParentId      *int32                 `protobuf:"varint,1,opt,name=parent_id,json=parentId,proto3,oneof" json:"parent_id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Slug          string                 `protobuf:"bytes,3,opt,name=slug,proto3" json:"slug,omitempty"`
-	IsActive      bool                   `protobuf:"varint,4,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
-	ImageUuid     []byte                 `protobuf:"bytes,5,opt,name=image_uuid,json=imageUuid,proto3,oneof" json:"image_uuid,omitempty"`
+	IsActive      bool                   `protobuf:"varint,4,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"` //  optional bytes image_uuid = 5;
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -266,13 +250,6 @@ func (x *UpsertCategoryParams) GetIsActive() bool {
 		return x.IsActive
 	}
 	return false
-}
-
-func (x *UpsertCategoryParams) GetImageUuid() []byte {
-	if x != nil {
-		return x.ImageUuid
-	}
-	return nil
 }
 
 type CreateCategoryParams struct {
@@ -521,8 +498,7 @@ func (x *CheckAvailableSlugParams) GetSlug() string {
 
 type SetImageToCategoryParams struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	ImageUuid     []byte                 `protobuf:"bytes,2,opt,name=image_uuid,json=imageUuid,proto3" json:"image_uuid,omitempty"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"` //  bytes image_uuid = 2;
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -562,13 +538,6 @@ func (x *SetImageToCategoryParams) GetId() int32 {
 		return x.Id
 	}
 	return 0
-}
-
-func (x *SetImageToCategoryParams) GetImageUuid() []byte {
-	if x != nil {
-		return x.ImageUuid
-	}
-	return nil
 }
 
 type OrderSortCategory struct {
@@ -1223,7 +1192,7 @@ var File_catalog_categories_proto protoreflect.FileDescriptor
 
 const file_catalog_categories_proto_rawDesc = "" +
 	"\n" +
-	"\x18catalog/categories.proto\x12\acatalog\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x13common/common.proto\"\xd7\x02\n" +
+	"\x18catalog/categories.proto\x12\acatalog\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x13common/common.proto\"\xa4\x02\n" +
 	"\bCategory\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12 \n" +
 	"\tparent_id\x18\x02 \x01(\x05H\x00R\bparentId\x88\x01\x01\x12\x12\n" +
@@ -1231,33 +1200,24 @@ const file_catalog_categories_proto_rawDesc = "" +
 	"\x04slug\x18\x04 \x01(\tR\x04slug\x12\x1b\n" +
 	"\tis_active\x18\x05 \x01(\bR\bisActive\x12\x1d\n" +
 	"\n" +
-	"order_sort\x18\x06 \x01(\x05R\torderSort\x12\"\n" +
-	"\n" +
-	"image_uuid\x18\a \x01(\fH\x01R\timageUuid\x88\x01\x01\x129\n" +
+	"order_sort\x18\x06 \x01(\x05R\torderSort\x129\n" +
 	"\n" +
 	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
 	"updated_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB\f\n" +
 	"\n" +
-	"_parent_idB\r\n" +
-	"\v_image_uuid\"z\n" +
+	"_parent_id\"G\n" +
 	"\rCategoryShort\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
-	"\x04slug\x18\x03 \x01(\tR\x04slug\x12\"\n" +
-	"\n" +
-	"image_uuid\x18\x04 \x01(\fH\x00R\timageUuid\x88\x01\x01B\r\n" +
-	"\v_image_uuid\"\xbe\x01\n" +
+	"\x04slug\x18\x03 \x01(\tR\x04slug\"\x8b\x01\n" +
 	"\x14UpsertCategoryParams\x12 \n" +
 	"\tparent_id\x18\x01 \x01(\x05H\x00R\bparentId\x88\x01\x01\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04slug\x18\x03 \x01(\tR\x04slug\x12\x1b\n" +
-	"\tis_active\x18\x04 \x01(\bR\bisActive\x12\"\n" +
+	"\tis_active\x18\x04 \x01(\bR\bisActiveB\f\n" +
 	"\n" +
-	"image_uuid\x18\x05 \x01(\fH\x01R\timageUuid\x88\x01\x01B\f\n" +
-	"\n" +
-	"_parent_idB\r\n" +
-	"\v_image_uuid\"I\n" +
+	"_parent_id\"I\n" +
 	"\x14CreateCategoryParams\x121\n" +
 	"\x04data\x18\x01 \x01(\v2\x1d.catalog.UpsertCategoryParamsR\x04data\"Y\n" +
 	"\x14UpdateCategoryParams\x12\x0e\n" +
@@ -1271,11 +1231,9 @@ const file_catalog_categories_proto_rawDesc = "" +
 	"\n" +
 	"parent_ids\x18\x02 \x01(\fR\tparentIds\".\n" +
 	"\x18CheckAvailableSlugParams\x12\x12\n" +
-	"\x04slug\x18\x01 \x01(\tR\x04slug\"I\n" +
+	"\x04slug\x18\x01 \x01(\tR\x04slug\"*\n" +
 	"\x18SetImageToCategoryParams\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1d\n" +
-	"\n" +
-	"image_uuid\x18\x02 \x01(\fR\timageUuid\"B\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"B\n" +
 	"\x11OrderSortCategory\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x1d\n" +
 	"\n" +
@@ -1382,7 +1340,6 @@ func file_catalog_categories_proto_init() {
 		return
 	}
 	file_catalog_categories_proto_msgTypes[0].OneofWrappers = []any{}
-	file_catalog_categories_proto_msgTypes[1].OneofWrappers = []any{}
 	file_catalog_categories_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

@@ -1999,8 +1999,8 @@ func (x *CommonToggleAttachProductStatus) GetStatus() bool {
 }
 
 type CommonToggleAttachProductsResponse struct {
-	state         protoimpl.MessageState           `protogen:"open.v1"`
-	Statuses      *CommonToggleAttachProductStatus `protobuf:"bytes,1,opt,name=statuses,proto3" json:"statuses,omitempty"`
+	state         protoimpl.MessageState             `protogen:"open.v1"`
+	Statuses      []*CommonToggleAttachProductStatus `protobuf:"bytes,1,rep,name=statuses,proto3" json:"statuses,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2035,7 +2035,7 @@ func (*CommonToggleAttachProductsResponse) Descriptor() ([]byte, []int) {
 	return file_catalog_products_proto_rawDescGZIP(), []int{37}
 }
 
-func (x *CommonToggleAttachProductsResponse) GetStatuses() *CommonToggleAttachProductStatus {
+func (x *CommonToggleAttachProductsResponse) GetStatuses() []*CommonToggleAttachProductStatus {
 	if x != nil {
 		return x.Statuses
 	}
@@ -2357,7 +2357,7 @@ const file_catalog_products_proto_rawDesc = "" +
 	"\fproduct_uuid\x18\x01 \x01(\fR\vproductUuid\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\bR\x06status\"j\n" +
 	"\"CommonToggleAttachProductsResponse\x12D\n" +
-	"\bstatuses\x18\x01 \x01(\v2(.catalog.CommonToggleAttachProductStatusR\bstatuses\"`\n" +
+	"\bstatuses\x18\x01 \x03(\v2(.catalog.CommonToggleAttachProductStatusR\bstatuses\"`\n" +
 	"\x1cToggleAttachProductsToBrands\x12#\n" +
 	"\rproduct_uuids\x18\x01 \x03(\fR\fproductUuids\x12\x1b\n" +
 	"\tbrand_ids\x18\x02 \x01(\x05R\bbrandIds\"_\n" +

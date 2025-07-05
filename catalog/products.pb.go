@@ -1668,7 +1668,7 @@ func (x *UpdateProductsPrice) GetPrice() int32 {
 
 type UpdateProductsPricesParams struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Stocks        []*UpdateProductsStock `protobuf:"bytes,1,rep,name=stocks,proto3" json:"stocks,omitempty"`
+	Stocks        []*UpdateProductsPrice `protobuf:"bytes,1,rep,name=stocks,proto3" json:"stocks,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1703,7 +1703,7 @@ func (*UpdateProductsPricesParams) Descriptor() ([]byte, []int) {
 	return file_catalog_products_proto_rawDescGZIP(), []int{30}
 }
 
-func (x *UpdateProductsPricesParams) GetStocks() []*UpdateProductsStock {
+func (x *UpdateProductsPricesParams) GetStocks() []*UpdateProductsPrice {
 	if x != nil {
 		return x.Stocks
 	}
@@ -2340,7 +2340,7 @@ const file_catalog_products_proto_rawDesc = "" +
 	"\fproduct_uuid\x18\x01 \x01(\fR\vproductUuid\x12\x14\n" +
 	"\x05price\x18\x02 \x01(\x05R\x05price\"R\n" +
 	"\x1aUpdateProductsPricesParams\x124\n" +
-	"\x06stocks\x18\x01 \x03(\v2\x1c.catalog.UpdateProductsStockR\x06stocks\"V\n" +
+	"\x06stocks\x18\x01 \x03(\v2\x1c.catalog.UpdateProductsPriceR\x06stocks\"V\n" +
 	"\x19UpdateProductsPriceStatus\x12!\n" +
 	"\fproduct_uuid\x18\x02 \x01(\fR\vproductUuid\x12\x16\n" +
 	"\x06status\x18\x03 \x01(\bR\x06status\"^\n" +
@@ -2465,7 +2465,7 @@ var file_catalog_products_proto_depIdxs = []int32{
 	23, // 25: catalog.UpdateProductsStatusResponse.statuses:type_name -> catalog.UpdateProductsStatus
 	26, // 26: catalog.UpdateProductsStocksParams.stocks:type_name -> catalog.UpdateProductsStock
 	28, // 27: catalog.UpdateProductsStocksResponse.statuses:type_name -> catalog.UpdateProductsStockStatus
-	26, // 28: catalog.UpdateProductsPricesParams.stocks:type_name -> catalog.UpdateProductsStock
+	30, // 28: catalog.UpdateProductsPricesParams.stocks:type_name -> catalog.UpdateProductsPrice
 	32, // 29: catalog.UpdateProductsPricesResponse.statuses:type_name -> catalog.UpdateProductsPriceStatus
 	35, // 30: catalog.ToggleAttachProductsToCategoryParams.list:type_name -> catalog.ToggleAttachProductsToCategories
 	37, // 31: catalog.CommonToggleAttachProductsResponse.statuses:type_name -> catalog.CommonToggleAttachProductStatus

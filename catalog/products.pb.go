@@ -1476,7 +1476,7 @@ func (x *UpdateProductsStockStatus) GetStatus() bool {
 
 type UpdateProductsStocksResponse struct {
 	state         protoimpl.MessageState       `protogen:"open.v1"`
-	Stocks        []*UpdateProductsStockStatus `protobuf:"bytes,1,rep,name=stocks,proto3" json:"stocks,omitempty"`
+	Statuses      []*UpdateProductsStockStatus `protobuf:"bytes,1,rep,name=statuses,proto3" json:"statuses,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1511,9 +1511,201 @@ func (*UpdateProductsStocksResponse) Descriptor() ([]byte, []int) {
 	return file_catalog_products_proto_rawDescGZIP(), []int{26}
 }
 
-func (x *UpdateProductsStocksResponse) GetStocks() []*UpdateProductsStockStatus {
+func (x *UpdateProductsStocksResponse) GetStatuses() []*UpdateProductsStockStatus {
+	if x != nil {
+		return x.Statuses
+	}
+	return nil
+}
+
+type UpdateProductsPrice struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ProductUuid   []byte                 `protobuf:"bytes,1,opt,name=product_uuid,json=productUuid,proto3" json:"product_uuid,omitempty"`
+	Price         int32                  `protobuf:"varint,2,opt,name=price,proto3" json:"price,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateProductsPrice) Reset() {
+	*x = UpdateProductsPrice{}
+	mi := &file_catalog_products_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateProductsPrice) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateProductsPrice) ProtoMessage() {}
+
+func (x *UpdateProductsPrice) ProtoReflect() protoreflect.Message {
+	mi := &file_catalog_products_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateProductsPrice.ProtoReflect.Descriptor instead.
+func (*UpdateProductsPrice) Descriptor() ([]byte, []int) {
+	return file_catalog_products_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *UpdateProductsPrice) GetProductUuid() []byte {
+	if x != nil {
+		return x.ProductUuid
+	}
+	return nil
+}
+
+func (x *UpdateProductsPrice) GetPrice() int32 {
+	if x != nil {
+		return x.Price
+	}
+	return 0
+}
+
+type UpdateProductsPricesParams struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Stocks        []*UpdateProductsStock `protobuf:"bytes,1,rep,name=stocks,proto3" json:"stocks,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateProductsPricesParams) Reset() {
+	*x = UpdateProductsPricesParams{}
+	mi := &file_catalog_products_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateProductsPricesParams) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateProductsPricesParams) ProtoMessage() {}
+
+func (x *UpdateProductsPricesParams) ProtoReflect() protoreflect.Message {
+	mi := &file_catalog_products_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateProductsPricesParams.ProtoReflect.Descriptor instead.
+func (*UpdateProductsPricesParams) Descriptor() ([]byte, []int) {
+	return file_catalog_products_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *UpdateProductsPricesParams) GetStocks() []*UpdateProductsStock {
 	if x != nil {
 		return x.Stocks
+	}
+	return nil
+}
+
+type UpdateProductsPriceStatus struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ProductUuid   []byte                 `protobuf:"bytes,2,opt,name=product_uuid,json=productUuid,proto3" json:"product_uuid,omitempty"`
+	Status        bool                   `protobuf:"varint,3,opt,name=status,proto3" json:"status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateProductsPriceStatus) Reset() {
+	*x = UpdateProductsPriceStatus{}
+	mi := &file_catalog_products_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateProductsPriceStatus) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateProductsPriceStatus) ProtoMessage() {}
+
+func (x *UpdateProductsPriceStatus) ProtoReflect() protoreflect.Message {
+	mi := &file_catalog_products_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateProductsPriceStatus.ProtoReflect.Descriptor instead.
+func (*UpdateProductsPriceStatus) Descriptor() ([]byte, []int) {
+	return file_catalog_products_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *UpdateProductsPriceStatus) GetProductUuid() []byte {
+	if x != nil {
+		return x.ProductUuid
+	}
+	return nil
+}
+
+func (x *UpdateProductsPriceStatus) GetStatus() bool {
+	if x != nil {
+		return x.Status
+	}
+	return false
+}
+
+type UpdateProductsPricesResponse struct {
+	state         protoimpl.MessageState       `protogen:"open.v1"`
+	Statuses      []*UpdateProductsPriceStatus `protobuf:"bytes,1,rep,name=statuses,proto3" json:"statuses,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateProductsPricesResponse) Reset() {
+	*x = UpdateProductsPricesResponse{}
+	mi := &file_catalog_products_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateProductsPricesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateProductsPricesResponse) ProtoMessage() {}
+
+func (x *UpdateProductsPricesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_catalog_products_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateProductsPricesResponse.ProtoReflect.Descriptor instead.
+func (*UpdateProductsPricesResponse) Descriptor() ([]byte, []int) {
+	return file_catalog_products_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *UpdateProductsPricesResponse) GetStatuses() []*UpdateProductsPriceStatus {
+	if x != nil {
+		return x.Statuses
 	}
 	return nil
 }
@@ -1527,7 +1719,7 @@ type CheckProductAvailableSlugParams struct {
 
 func (x *CheckProductAvailableSlugParams) Reset() {
 	*x = CheckProductAvailableSlugParams{}
-	mi := &file_catalog_products_proto_msgTypes[27]
+	mi := &file_catalog_products_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1539,7 +1731,7 @@ func (x *CheckProductAvailableSlugParams) String() string {
 func (*CheckProductAvailableSlugParams) ProtoMessage() {}
 
 func (x *CheckProductAvailableSlugParams) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_products_proto_msgTypes[27]
+	mi := &file_catalog_products_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1552,7 +1744,7 @@ func (x *CheckProductAvailableSlugParams) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckProductAvailableSlugParams.ProtoReflect.Descriptor instead.
 func (*CheckProductAvailableSlugParams) Descriptor() ([]byte, []int) {
-	return file_catalog_products_proto_rawDescGZIP(), []int{27}
+	return file_catalog_products_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *CheckProductAvailableSlugParams) GetSlug() string {
@@ -1572,7 +1764,7 @@ type ToggleAttachProductsToCategories struct {
 
 func (x *ToggleAttachProductsToCategories) Reset() {
 	*x = ToggleAttachProductsToCategories{}
-	mi := &file_catalog_products_proto_msgTypes[28]
+	mi := &file_catalog_products_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1584,7 +1776,7 @@ func (x *ToggleAttachProductsToCategories) String() string {
 func (*ToggleAttachProductsToCategories) ProtoMessage() {}
 
 func (x *ToggleAttachProductsToCategories) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_products_proto_msgTypes[28]
+	mi := &file_catalog_products_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1597,7 +1789,7 @@ func (x *ToggleAttachProductsToCategories) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ToggleAttachProductsToCategories.ProtoReflect.Descriptor instead.
 func (*ToggleAttachProductsToCategories) Descriptor() ([]byte, []int) {
-	return file_catalog_products_proto_rawDescGZIP(), []int{28}
+	return file_catalog_products_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *ToggleAttachProductsToCategories) GetProductUuids() [][]byte {
@@ -1623,7 +1815,7 @@ type ToggleAttachProductsToCategoryParams struct {
 
 func (x *ToggleAttachProductsToCategoryParams) Reset() {
 	*x = ToggleAttachProductsToCategoryParams{}
-	mi := &file_catalog_products_proto_msgTypes[29]
+	mi := &file_catalog_products_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1635,7 +1827,7 @@ func (x *ToggleAttachProductsToCategoryParams) String() string {
 func (*ToggleAttachProductsToCategoryParams) ProtoMessage() {}
 
 func (x *ToggleAttachProductsToCategoryParams) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_products_proto_msgTypes[29]
+	mi := &file_catalog_products_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1648,7 +1840,7 @@ func (x *ToggleAttachProductsToCategoryParams) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use ToggleAttachProductsToCategoryParams.ProtoReflect.Descriptor instead.
 func (*ToggleAttachProductsToCategoryParams) Descriptor() ([]byte, []int) {
-	return file_catalog_products_proto_rawDescGZIP(), []int{29}
+	return file_catalog_products_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *ToggleAttachProductsToCategoryParams) GetList() *ToggleAttachProductsToCategories {
@@ -1668,7 +1860,7 @@ type ToggleAttachProductsToBrands struct {
 
 func (x *ToggleAttachProductsToBrands) Reset() {
 	*x = ToggleAttachProductsToBrands{}
-	mi := &file_catalog_products_proto_msgTypes[30]
+	mi := &file_catalog_products_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1680,7 +1872,7 @@ func (x *ToggleAttachProductsToBrands) String() string {
 func (*ToggleAttachProductsToBrands) ProtoMessage() {}
 
 func (x *ToggleAttachProductsToBrands) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_products_proto_msgTypes[30]
+	mi := &file_catalog_products_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1693,7 +1885,7 @@ func (x *ToggleAttachProductsToBrands) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ToggleAttachProductsToBrands.ProtoReflect.Descriptor instead.
 func (*ToggleAttachProductsToBrands) Descriptor() ([]byte, []int) {
-	return file_catalog_products_proto_rawDescGZIP(), []int{30}
+	return file_catalog_products_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *ToggleAttachProductsToBrands) GetProductUuids() [][]byte {
@@ -1719,7 +1911,7 @@ type ToggleAttachProductsToBrandsParams struct {
 
 func (x *ToggleAttachProductsToBrandsParams) Reset() {
 	*x = ToggleAttachProductsToBrandsParams{}
-	mi := &file_catalog_products_proto_msgTypes[31]
+	mi := &file_catalog_products_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1731,7 +1923,7 @@ func (x *ToggleAttachProductsToBrandsParams) String() string {
 func (*ToggleAttachProductsToBrandsParams) ProtoMessage() {}
 
 func (x *ToggleAttachProductsToBrandsParams) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_products_proto_msgTypes[31]
+	mi := &file_catalog_products_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1744,7 +1936,7 @@ func (x *ToggleAttachProductsToBrandsParams) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use ToggleAttachProductsToBrandsParams.ProtoReflect.Descriptor instead.
 func (*ToggleAttachProductsToBrandsParams) Descriptor() ([]byte, []int) {
-	return file_catalog_products_proto_rawDescGZIP(), []int{31}
+	return file_catalog_products_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *ToggleAttachProductsToBrandsParams) GetList() *ToggleAttachProductsToBrands {
@@ -1764,7 +1956,7 @@ type ToggleAttachProductsToTags struct {
 
 func (x *ToggleAttachProductsToTags) Reset() {
 	*x = ToggleAttachProductsToTags{}
-	mi := &file_catalog_products_proto_msgTypes[32]
+	mi := &file_catalog_products_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1776,7 +1968,7 @@ func (x *ToggleAttachProductsToTags) String() string {
 func (*ToggleAttachProductsToTags) ProtoMessage() {}
 
 func (x *ToggleAttachProductsToTags) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_products_proto_msgTypes[32]
+	mi := &file_catalog_products_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1789,7 +1981,7 @@ func (x *ToggleAttachProductsToTags) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ToggleAttachProductsToTags.ProtoReflect.Descriptor instead.
 func (*ToggleAttachProductsToTags) Descriptor() ([]byte, []int) {
-	return file_catalog_products_proto_rawDescGZIP(), []int{32}
+	return file_catalog_products_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *ToggleAttachProductsToTags) GetProductUuids() [][]byte {
@@ -1815,7 +2007,7 @@ type ToggleAttachProductsToTagsParams struct {
 
 func (x *ToggleAttachProductsToTagsParams) Reset() {
 	*x = ToggleAttachProductsToTagsParams{}
-	mi := &file_catalog_products_proto_msgTypes[33]
+	mi := &file_catalog_products_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1827,7 +2019,7 @@ func (x *ToggleAttachProductsToTagsParams) String() string {
 func (*ToggleAttachProductsToTagsParams) ProtoMessage() {}
 
 func (x *ToggleAttachProductsToTagsParams) ProtoReflect() protoreflect.Message {
-	mi := &file_catalog_products_proto_msgTypes[33]
+	mi := &file_catalog_products_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1840,7 +2032,7 @@ func (x *ToggleAttachProductsToTagsParams) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ToggleAttachProductsToTagsParams.ProtoReflect.Descriptor instead.
 func (*ToggleAttachProductsToTagsParams) Descriptor() ([]byte, []int) {
-	return file_catalog_products_proto_rawDescGZIP(), []int{33}
+	return file_catalog_products_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *ToggleAttachProductsToTagsParams) GetList() *ToggleAttachProductsToBrands {
@@ -1944,9 +2136,19 @@ const file_catalog_products_proto_rawDesc = "" +
 	"\x19UpdateProductsStockStatus\x12!\n" +
 	"\fwarehouse_id\x18\x01 \x01(\x05R\vwarehouseId\x12!\n" +
 	"\fproduct_uuid\x18\x02 \x01(\fR\vproductUuid\x12\x16\n" +
-	"\x06status\x18\x03 \x01(\bR\x06status\"Z\n" +
-	"\x1cUpdateProductsStocksResponse\x12:\n" +
-	"\x06stocks\x18\x01 \x03(\v2\".catalog.UpdateProductsStockStatusR\x06stocks\"5\n" +
+	"\x06status\x18\x03 \x01(\bR\x06status\"^\n" +
+	"\x1cUpdateProductsStocksResponse\x12>\n" +
+	"\bstatuses\x18\x01 \x03(\v2\".catalog.UpdateProductsStockStatusR\bstatuses\"N\n" +
+	"\x13UpdateProductsPrice\x12!\n" +
+	"\fproduct_uuid\x18\x01 \x01(\fR\vproductUuid\x12\x14\n" +
+	"\x05price\x18\x02 \x01(\x05R\x05price\"R\n" +
+	"\x1aUpdateProductsPricesParams\x124\n" +
+	"\x06stocks\x18\x01 \x03(\v2\x1c.catalog.UpdateProductsStockR\x06stocks\"V\n" +
+	"\x19UpdateProductsPriceStatus\x12!\n" +
+	"\fproduct_uuid\x18\x02 \x01(\fR\vproductUuid\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\bR\x06status\"^\n" +
+	"\x1cUpdateProductsPricesResponse\x12>\n" +
+	"\bstatuses\x18\x01 \x03(\v2\".catalog.UpdateProductsPriceStatusR\bstatuses\"5\n" +
 	"\x1fCheckProductAvailableSlugParams\x12\x12\n" +
 	"\x04slug\x18\x01 \x01(\tR\x04slug\"j\n" +
 	" ToggleAttachProductsToCategories\x12#\n" +
@@ -1983,7 +2185,7 @@ func file_catalog_products_proto_rawDescGZIP() []byte {
 }
 
 var file_catalog_products_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_catalog_products_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
+var file_catalog_products_proto_msgTypes = make([]protoimpl.MessageInfo, 38)
 var file_catalog_products_proto_goTypes = []any{
 	(ProductStatus)(0),                           // 0: catalog.ProductStatus
 	(*Stock)(nil),                                // 1: catalog.Stock
@@ -2013,16 +2215,20 @@ var file_catalog_products_proto_goTypes = []any{
 	(*UpdateProductsStocksParams)(nil),           // 25: catalog.UpdateProductsStocksParams
 	(*UpdateProductsStockStatus)(nil),            // 26: catalog.UpdateProductsStockStatus
 	(*UpdateProductsStocksResponse)(nil),         // 27: catalog.UpdateProductsStocksResponse
-	(*CheckProductAvailableSlugParams)(nil),      // 28: catalog.CheckProductAvailableSlugParams
-	(*ToggleAttachProductsToCategories)(nil),     // 29: catalog.ToggleAttachProductsToCategories
-	(*ToggleAttachProductsToCategoryParams)(nil), // 30: catalog.ToggleAttachProductsToCategoryParams
-	(*ToggleAttachProductsToBrands)(nil),         // 31: catalog.ToggleAttachProductsToBrands
-	(*ToggleAttachProductsToBrandsParams)(nil),   // 32: catalog.ToggleAttachProductsToBrandsParams
-	(*ToggleAttachProductsToTags)(nil),           // 33: catalog.ToggleAttachProductsToTags
-	(*ToggleAttachProductsToTagsParams)(nil),     // 34: catalog.ToggleAttachProductsToTagsParams
-	(*common.GetPaginateParams)(nil),             // 35: common.GetPaginateParams
-	(*common.GetOffsetParams)(nil),               // 36: common.GetOffsetParams
-	(*common.PaginateMeta)(nil),                  // 37: common.PaginateMeta
+	(*UpdateProductsPrice)(nil),                  // 28: catalog.UpdateProductsPrice
+	(*UpdateProductsPricesParams)(nil),           // 29: catalog.UpdateProductsPricesParams
+	(*UpdateProductsPriceStatus)(nil),            // 30: catalog.UpdateProductsPriceStatus
+	(*UpdateProductsPricesResponse)(nil),         // 31: catalog.UpdateProductsPricesResponse
+	(*CheckProductAvailableSlugParams)(nil),      // 32: catalog.CheckProductAvailableSlugParams
+	(*ToggleAttachProductsToCategories)(nil),     // 33: catalog.ToggleAttachProductsToCategories
+	(*ToggleAttachProductsToCategoryParams)(nil), // 34: catalog.ToggleAttachProductsToCategoryParams
+	(*ToggleAttachProductsToBrands)(nil),         // 35: catalog.ToggleAttachProductsToBrands
+	(*ToggleAttachProductsToBrandsParams)(nil),   // 36: catalog.ToggleAttachProductsToBrandsParams
+	(*ToggleAttachProductsToTags)(nil),           // 37: catalog.ToggleAttachProductsToTags
+	(*ToggleAttachProductsToTagsParams)(nil),     // 38: catalog.ToggleAttachProductsToTagsParams
+	(*common.GetPaginateParams)(nil),             // 39: common.GetPaginateParams
+	(*common.GetOffsetParams)(nil),               // 40: common.GetOffsetParams
+	(*common.PaginateMeta)(nil),                  // 41: common.PaginateMeta
 }
 var file_catalog_products_proto_depIdxs = []int32{
 	3,  // 0: catalog.Product.meta:type_name -> catalog.ProductMeta
@@ -2031,19 +2237,19 @@ var file_catalog_products_proto_depIdxs = []int32{
 	3,  // 3: catalog.ProductShort.meta:type_name -> catalog.ProductMeta
 	2,  // 4: catalog.ProductShort.images:type_name -> catalog.ProductImage
 	0,  // 5: catalog.GetProductsMeta.status:type_name -> catalog.ProductStatus
-	35, // 6: catalog.GetProductsPaginateParams.params:type_name -> common.GetPaginateParams
+	39, // 6: catalog.GetProductsPaginateParams.params:type_name -> common.GetPaginateParams
 	6,  // 7: catalog.GetProductsPaginateParams.meta:type_name -> catalog.GetProductsMeta
-	35, // 8: catalog.GetProductsShortPaginateParams.params:type_name -> common.GetPaginateParams
+	39, // 8: catalog.GetProductsShortPaginateParams.params:type_name -> common.GetPaginateParams
 	6,  // 9: catalog.GetProductsShortPaginateParams.meta:type_name -> catalog.GetProductsMeta
-	36, // 10: catalog.GetProductsOffsetParams.params:type_name -> common.GetOffsetParams
+	40, // 10: catalog.GetProductsOffsetParams.params:type_name -> common.GetOffsetParams
 	0,  // 11: catalog.GetProductsOffsetParams.status:type_name -> catalog.ProductStatus
 	6,  // 12: catalog.GetProductsOffsetParams.meta:type_name -> catalog.GetProductsMeta
-	36, // 13: catalog.GetProductsShortOffsetParams.params:type_name -> common.GetOffsetParams
+	40, // 13: catalog.GetProductsShortOffsetParams.params:type_name -> common.GetOffsetParams
 	6,  // 14: catalog.GetProductsShortOffsetParams.meta:type_name -> catalog.GetProductsMeta
 	4,  // 15: catalog.GetProductsPaginateResponse.list:type_name -> catalog.Product
-	37, // 16: catalog.GetProductsPaginateResponse.meta:type_name -> common.PaginateMeta
+	41, // 16: catalog.GetProductsPaginateResponse.meta:type_name -> common.PaginateMeta
 	5,  // 17: catalog.GetProductsShortPaginateResponse.list:type_name -> catalog.ProductShort
-	37, // 18: catalog.GetProductsShortPaginateResponse.meta:type_name -> common.PaginateMeta
+	41, // 18: catalog.GetProductsShortPaginateResponse.meta:type_name -> common.PaginateMeta
 	4,  // 19: catalog.GetProductsOffsetResponse.list:type_name -> catalog.Product
 	5,  // 20: catalog.GetProductsShortOffsetResponse.list:type_name -> catalog.ProductShort
 	4,  // 21: catalog.GetProductsResponse.list:type_name -> catalog.Product
@@ -2052,15 +2258,17 @@ var file_catalog_products_proto_depIdxs = []int32{
 	19, // 24: catalog.UpdateProductMetaParams.data:type_name -> catalog.UpsertProductMetaParams
 	0,  // 25: catalog.UpdateProductStatusParams.status:type_name -> catalog.ProductStatus
 	24, // 26: catalog.UpdateProductsStocksParams.stocks:type_name -> catalog.UpdateProductsStock
-	26, // 27: catalog.UpdateProductsStocksResponse.stocks:type_name -> catalog.UpdateProductsStockStatus
-	29, // 28: catalog.ToggleAttachProductsToCategoryParams.list:type_name -> catalog.ToggleAttachProductsToCategories
-	31, // 29: catalog.ToggleAttachProductsToBrandsParams.list:type_name -> catalog.ToggleAttachProductsToBrands
-	31, // 30: catalog.ToggleAttachProductsToTagsParams.list:type_name -> catalog.ToggleAttachProductsToBrands
-	31, // [31:31] is the sub-list for method output_type
-	31, // [31:31] is the sub-list for method input_type
-	31, // [31:31] is the sub-list for extension type_name
-	31, // [31:31] is the sub-list for extension extendee
-	0,  // [0:31] is the sub-list for field type_name
+	26, // 27: catalog.UpdateProductsStocksResponse.statuses:type_name -> catalog.UpdateProductsStockStatus
+	24, // 28: catalog.UpdateProductsPricesParams.stocks:type_name -> catalog.UpdateProductsStock
+	30, // 29: catalog.UpdateProductsPricesResponse.statuses:type_name -> catalog.UpdateProductsPriceStatus
+	33, // 30: catalog.ToggleAttachProductsToCategoryParams.list:type_name -> catalog.ToggleAttachProductsToCategories
+	35, // 31: catalog.ToggleAttachProductsToBrandsParams.list:type_name -> catalog.ToggleAttachProductsToBrands
+	35, // 32: catalog.ToggleAttachProductsToTagsParams.list:type_name -> catalog.ToggleAttachProductsToBrands
+	33, // [33:33] is the sub-list for method output_type
+	33, // [33:33] is the sub-list for method input_type
+	33, // [33:33] is the sub-list for extension type_name
+	33, // [33:33] is the sub-list for extension extendee
+	0,  // [0:33] is the sub-list for field type_name
 }
 
 func init() { file_catalog_products_proto_init() }
@@ -2078,7 +2286,7 @@ func file_catalog_products_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_catalog_products_proto_rawDesc), len(file_catalog_products_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   34,
+			NumMessages:   38,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

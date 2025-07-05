@@ -49,7 +49,7 @@ const (
 	Catalog_DeleteCategories_FullMethodName               = "/catalog.Catalog/DeleteCategories"
 	Catalog_SetImageToCategory_FullMethodName             = "/catalog.Catalog/SetImageToCategory"
 	Catalog_UpdateOrderSortToCategories_FullMethodName    = "/catalog.Catalog/UpdateOrderSortToCategories"
-	Catalog_CheckAvailableSlug_FullMethodName             = "/catalog.Catalog/CheckAvailableSlug"
+	Catalog_CheckCategoryAvailableSlug_FullMethodName     = "/catalog.Catalog/CheckCategoryAvailableSlug"
 	Catalog_GetProductsPaginate_FullMethodName            = "/catalog.Catalog/GetProductsPaginate"
 	Catalog_GetProductsShortPaginate_FullMethodName       = "/catalog.Catalog/GetProductsShortPaginate"
 	Catalog_GetProductsOffset_FullMethodName              = "/catalog.Catalog/GetProductsOffset"
@@ -60,6 +60,7 @@ const (
 	Catalog_UpdateProduct_FullMethodName                  = "/catalog.Catalog/UpdateProduct"
 	Catalog_UpdateProductStatus_FullMethodName            = "/catalog.Catalog/UpdateProductStatus"
 	Catalog_UpdateProductsStocks_FullMethodName           = "/catalog.Catalog/UpdateProductsStocks"
+	Catalog_UpdateProductsPrices_FullMethodName           = "/catalog.Catalog/UpdateProductsPrices"
 	Catalog_CheckProductAvailableSlug_FullMethodName      = "/catalog.Catalog/CheckProductAvailableSlug"
 	Catalog_ToggleAttachProductsToCategory_FullMethodName = "/catalog.Catalog/ToggleAttachProductsToCategory"
 	Catalog_ToggleAttachProductsToBrands_FullMethodName   = "/catalog.Catalog/ToggleAttachProductsToBrands"
@@ -102,7 +103,7 @@ type CatalogClient interface {
 	DeleteCategories(ctx context.Context, in *DeleteCategoriesParams, opts ...grpc.CallOption) (*DeleteCategoriesResponse, error)
 	SetImageToCategory(ctx context.Context, in *SetImageToCategoryParams, opts ...grpc.CallOption) (*common.Status, error)
 	UpdateOrderSortToCategories(ctx context.Context, in *UpdateOrderSortToCategoriesParams, opts ...grpc.CallOption) (*UpdateOrderSortToCategoriesResponse, error)
-	CheckAvailableSlug(ctx context.Context, in *CheckAvailableSlugParams, opts ...grpc.CallOption) (*common.Status, error)
+	CheckCategoryAvailableSlug(ctx context.Context, in *CheckAvailableSlugParams, opts ...grpc.CallOption) (*common.Status, error)
 	// Products
 	GetProductsPaginate(ctx context.Context, in *GetProductsPaginateParams, opts ...grpc.CallOption) (*GetProductsPaginateResponse, error)
 	GetProductsShortPaginate(ctx context.Context, in *GetProductsShortPaginateParams, opts ...grpc.CallOption) (*GetProductsShortPaginateResponse, error)
@@ -114,6 +115,7 @@ type CatalogClient interface {
 	UpdateProduct(ctx context.Context, in *UpdateProductMetaParams, opts ...grpc.CallOption) (*Product, error)
 	UpdateProductStatus(ctx context.Context, in *UpdateProductStatusParams, opts ...grpc.CallOption) (*common.Status, error)
 	UpdateProductsStocks(ctx context.Context, in *UpdateProductsStocksParams, opts ...grpc.CallOption) (*UpdateProductsStocksResponse, error)
+	UpdateProductsPrices(ctx context.Context, in *UpdateProductsPricesParams, opts ...grpc.CallOption) (*UpdateProductsPricesResponse, error)
 	CheckProductAvailableSlug(ctx context.Context, in *CheckProductAvailableSlugParams, opts ...grpc.CallOption) (*common.Status, error)
 	ToggleAttachProductsToCategory(ctx context.Context, in *ToggleAttachProductsToCategoryParams, opts ...grpc.CallOption) (*common.Status, error)
 	ToggleAttachProductsToBrands(ctx context.Context, in *ToggleAttachProductsToBrandsParams, opts ...grpc.CallOption) (*common.Status, error)
@@ -418,10 +420,10 @@ func (c *catalogClient) UpdateOrderSortToCategories(ctx context.Context, in *Upd
 	return out, nil
 }
 
-func (c *catalogClient) CheckAvailableSlug(ctx context.Context, in *CheckAvailableSlugParams, opts ...grpc.CallOption) (*common.Status, error) {
+func (c *catalogClient) CheckCategoryAvailableSlug(ctx context.Context, in *CheckAvailableSlugParams, opts ...grpc.CallOption) (*common.Status, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(common.Status)
-	err := c.cc.Invoke(ctx, Catalog_CheckAvailableSlug_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Catalog_CheckCategoryAvailableSlug_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -528,6 +530,16 @@ func (c *catalogClient) UpdateProductsStocks(ctx context.Context, in *UpdateProd
 	return out, nil
 }
 
+func (c *catalogClient) UpdateProductsPrices(ctx context.Context, in *UpdateProductsPricesParams, opts ...grpc.CallOption) (*UpdateProductsPricesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateProductsPricesResponse)
+	err := c.cc.Invoke(ctx, Catalog_UpdateProductsPrices_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *catalogClient) CheckProductAvailableSlug(ctx context.Context, in *CheckProductAvailableSlugParams, opts ...grpc.CallOption) (*common.Status, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(common.Status)
@@ -604,7 +616,7 @@ type CatalogServer interface {
 	DeleteCategories(context.Context, *DeleteCategoriesParams) (*DeleteCategoriesResponse, error)
 	SetImageToCategory(context.Context, *SetImageToCategoryParams) (*common.Status, error)
 	UpdateOrderSortToCategories(context.Context, *UpdateOrderSortToCategoriesParams) (*UpdateOrderSortToCategoriesResponse, error)
-	CheckAvailableSlug(context.Context, *CheckAvailableSlugParams) (*common.Status, error)
+	CheckCategoryAvailableSlug(context.Context, *CheckAvailableSlugParams) (*common.Status, error)
 	// Products
 	GetProductsPaginate(context.Context, *GetProductsPaginateParams) (*GetProductsPaginateResponse, error)
 	GetProductsShortPaginate(context.Context, *GetProductsShortPaginateParams) (*GetProductsShortPaginateResponse, error)
@@ -616,6 +628,7 @@ type CatalogServer interface {
 	UpdateProduct(context.Context, *UpdateProductMetaParams) (*Product, error)
 	UpdateProductStatus(context.Context, *UpdateProductStatusParams) (*common.Status, error)
 	UpdateProductsStocks(context.Context, *UpdateProductsStocksParams) (*UpdateProductsStocksResponse, error)
+	UpdateProductsPrices(context.Context, *UpdateProductsPricesParams) (*UpdateProductsPricesResponse, error)
 	CheckProductAvailableSlug(context.Context, *CheckProductAvailableSlugParams) (*common.Status, error)
 	ToggleAttachProductsToCategory(context.Context, *ToggleAttachProductsToCategoryParams) (*common.Status, error)
 	ToggleAttachProductsToBrands(context.Context, *ToggleAttachProductsToBrandsParams) (*common.Status, error)
@@ -717,8 +730,8 @@ func (UnimplementedCatalogServer) SetImageToCategory(context.Context, *SetImageT
 func (UnimplementedCatalogServer) UpdateOrderSortToCategories(context.Context, *UpdateOrderSortToCategoriesParams) (*UpdateOrderSortToCategoriesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateOrderSortToCategories not implemented")
 }
-func (UnimplementedCatalogServer) CheckAvailableSlug(context.Context, *CheckAvailableSlugParams) (*common.Status, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CheckAvailableSlug not implemented")
+func (UnimplementedCatalogServer) CheckCategoryAvailableSlug(context.Context, *CheckAvailableSlugParams) (*common.Status, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CheckCategoryAvailableSlug not implemented")
 }
 func (UnimplementedCatalogServer) GetProductsPaginate(context.Context, *GetProductsPaginateParams) (*GetProductsPaginateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetProductsPaginate not implemented")
@@ -749,6 +762,9 @@ func (UnimplementedCatalogServer) UpdateProductStatus(context.Context, *UpdatePr
 }
 func (UnimplementedCatalogServer) UpdateProductsStocks(context.Context, *UpdateProductsStocksParams) (*UpdateProductsStocksResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateProductsStocks not implemented")
+}
+func (UnimplementedCatalogServer) UpdateProductsPrices(context.Context, *UpdateProductsPricesParams) (*UpdateProductsPricesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateProductsPrices not implemented")
 }
 func (UnimplementedCatalogServer) CheckProductAvailableSlug(context.Context, *CheckProductAvailableSlugParams) (*common.Status, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckProductAvailableSlug not implemented")
@@ -1305,20 +1321,20 @@ func _Catalog_UpdateOrderSortToCategories_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Catalog_CheckAvailableSlug_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Catalog_CheckCategoryAvailableSlug_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CheckAvailableSlugParams)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CatalogServer).CheckAvailableSlug(ctx, in)
+		return srv.(CatalogServer).CheckCategoryAvailableSlug(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Catalog_CheckAvailableSlug_FullMethodName,
+		FullMethod: Catalog_CheckCategoryAvailableSlug_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatalogServer).CheckAvailableSlug(ctx, req.(*CheckAvailableSlugParams))
+		return srv.(CatalogServer).CheckCategoryAvailableSlug(ctx, req.(*CheckAvailableSlugParams))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1499,6 +1515,24 @@ func _Catalog_UpdateProductsStocks_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CatalogServer).UpdateProductsStocks(ctx, req.(*UpdateProductsStocksParams))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Catalog_UpdateProductsPrices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateProductsPricesParams)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CatalogServer).UpdateProductsPrices(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Catalog_UpdateProductsPrices_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CatalogServer).UpdateProductsPrices(ctx, req.(*UpdateProductsPricesParams))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1699,8 +1733,8 @@ var Catalog_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Catalog_UpdateOrderSortToCategories_Handler,
 		},
 		{
-			MethodName: "CheckAvailableSlug",
-			Handler:    _Catalog_CheckAvailableSlug_Handler,
+			MethodName: "CheckCategoryAvailableSlug",
+			Handler:    _Catalog_CheckCategoryAvailableSlug_Handler,
 		},
 		{
 			MethodName: "GetProductsPaginate",
@@ -1741,6 +1775,10 @@ var Catalog_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateProductsStocks",
 			Handler:    _Catalog_UpdateProductsStocks_Handler,
+		},
+		{
+			MethodName: "UpdateProductsPrices",
+			Handler:    _Catalog_UpdateProductsPrices_Handler,
 		},
 		{
 			MethodName: "CheckProductAvailableSlug",

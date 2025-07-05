@@ -1903,8 +1903,8 @@ func (x *ToggleAttachProductsToCategories) GetCategoryIds() int32 {
 }
 
 type ToggleAttachProductsToCategoryParams struct {
-	state         protoimpl.MessageState            `protogen:"open.v1"`
-	List          *ToggleAttachProductsToCategories `protobuf:"bytes,1,opt,name=list,proto3" json:"list,omitempty"`
+	state         protoimpl.MessageState              `protogen:"open.v1"`
+	List          []*ToggleAttachProductsToCategories `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1939,7 +1939,7 @@ func (*ToggleAttachProductsToCategoryParams) Descriptor() ([]byte, []int) {
 	return file_catalog_products_proto_rawDescGZIP(), []int{35}
 }
 
-func (x *ToggleAttachProductsToCategoryParams) GetList() *ToggleAttachProductsToCategories {
+func (x *ToggleAttachProductsToCategoryParams) GetList() []*ToggleAttachProductsToCategories {
 	if x != nil {
 		return x.List
 	}
@@ -2095,8 +2095,8 @@ func (x *ToggleAttachProductsToBrands) GetBrandIds() int32 {
 }
 
 type ToggleAttachProductsToBrandsParams struct {
-	state         protoimpl.MessageState        `protogen:"open.v1"`
-	List          *ToggleAttachProductsToBrands `protobuf:"bytes,1,opt,name=list,proto3" json:"list,omitempty"`
+	state         protoimpl.MessageState          `protogen:"open.v1"`
+	List          []*ToggleAttachProductsToBrands `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2131,7 +2131,7 @@ func (*ToggleAttachProductsToBrandsParams) Descriptor() ([]byte, []int) {
 	return file_catalog_products_proto_rawDescGZIP(), []int{39}
 }
 
-func (x *ToggleAttachProductsToBrandsParams) GetList() *ToggleAttachProductsToBrands {
+func (x *ToggleAttachProductsToBrandsParams) GetList() []*ToggleAttachProductsToBrands {
 	if x != nil {
 		return x.List
 	}
@@ -2191,8 +2191,8 @@ func (x *ToggleAttachProductsToTags) GetTagIds() int32 {
 }
 
 type ToggleAttachProductsToTagsParams struct {
-	state         protoimpl.MessageState        `protogen:"open.v1"`
-	List          *ToggleAttachProductsToBrands `protobuf:"bytes,1,opt,name=list,proto3" json:"list,omitempty"`
+	state         protoimpl.MessageState          `protogen:"open.v1"`
+	List          []*ToggleAttachProductsToBrands `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2227,7 +2227,7 @@ func (*ToggleAttachProductsToTagsParams) Descriptor() ([]byte, []int) {
 	return file_catalog_products_proto_rawDescGZIP(), []int{41}
 }
 
-func (x *ToggleAttachProductsToTagsParams) GetList() *ToggleAttachProductsToBrands {
+func (x *ToggleAttachProductsToTagsParams) GetList() []*ToggleAttachProductsToBrands {
 	if x != nil {
 		return x.List
 	}
@@ -2352,7 +2352,7 @@ const file_catalog_products_proto_rawDesc = "" +
 	"\rproduct_uuids\x18\x01 \x03(\fR\fproductUuids\x12!\n" +
 	"\fcategory_ids\x18\x02 \x01(\x05R\vcategoryIds\"e\n" +
 	"$ToggleAttachProductsToCategoryParams\x12=\n" +
-	"\x04list\x18\x01 \x01(\v2).catalog.ToggleAttachProductsToCategoriesR\x04list\"\\\n" +
+	"\x04list\x18\x01 \x03(\v2).catalog.ToggleAttachProductsToCategoriesR\x04list\"\\\n" +
 	"\x1fCommonToggleAttachProductStatus\x12!\n" +
 	"\fproduct_uuid\x18\x01 \x01(\fR\vproductUuid\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\bR\x06status\"j\n" +
@@ -2362,12 +2362,12 @@ const file_catalog_products_proto_rawDesc = "" +
 	"\rproduct_uuids\x18\x01 \x03(\fR\fproductUuids\x12\x1b\n" +
 	"\tbrand_ids\x18\x02 \x01(\x05R\bbrandIds\"_\n" +
 	"\"ToggleAttachProductsToBrandsParams\x129\n" +
-	"\x04list\x18\x01 \x01(\v2%.catalog.ToggleAttachProductsToBrandsR\x04list\"Z\n" +
+	"\x04list\x18\x01 \x03(\v2%.catalog.ToggleAttachProductsToBrandsR\x04list\"Z\n" +
 	"\x1aToggleAttachProductsToTags\x12#\n" +
 	"\rproduct_uuids\x18\x01 \x03(\fR\fproductUuids\x12\x17\n" +
 	"\atag_ids\x18\x02 \x01(\x05R\x06tagIds\"]\n" +
 	" ToggleAttachProductsToTagsParams\x129\n" +
-	"\x04list\x18\x01 \x01(\v2%.catalog.ToggleAttachProductsToBrandsR\x04list*H\n" +
+	"\x04list\x18\x01 \x03(\v2%.catalog.ToggleAttachProductsToBrandsR\x04list*H\n" +
 	"\rProductStatus\x12\x0f\n" +
 	"\vUNSPECIFIED\x10\x00\x12\t\n" +
 	"\x05DRAFT\x10\x01\x12\r\n" +

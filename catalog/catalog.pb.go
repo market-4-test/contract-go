@@ -25,7 +25,7 @@ var File_catalog_catalog_proto protoreflect.FileDescriptor
 
 const file_catalog_catalog_proto_rawDesc = "" +
 	"\n" +
-	"\x15catalog/catalog.proto\x12\acatalog\x1a\x13common/common.proto\x1a\x16catalog/products.proto\x1a\x18catalog/categories.proto\x1a\x12catalog/tags.proto\x1a\x14catalog/brands.proto2\xec\x1d\n" +
+	"\x15catalog/catalog.proto\x12\acatalog\x1a\x13common/common.proto\x1a\x16catalog/products.proto\x1a\x18catalog/categories.proto\x1a\x12catalog/tags.proto\x1a\x14catalog/brands.proto2\xa6!\n" +
 	"\aCatalog\x12S\n" +
 	"\x0fGetTagsPaginate\x12\x1e.catalog.GetTagsPaginateParams\x1a .catalog.GetTagsPaginateResponse\x12b\n" +
 	"\x14GetTagsShortPaginate\x12#.catalog.GetTagsShortPaginateParams\x1a%.catalog.GetTagsShortPaginateResponse\x12M\n" +
@@ -66,14 +66,17 @@ const file_catalog_catalog_proto_rawDesc = "" +
 	"\x12GetProductsByUuids\x12!.catalog.GetProductsByUuidsParams\x1a\x1c.catalog.GetProductsResponse\x12E\n" +
 	"\x10GetProductByUuid\x12\x1f.catalog.GetProductByUuidParams\x1a\x10.catalog.Product\x12?\n" +
 	"\rCreateProduct\x12\x1c.catalog.CreateProductParams\x1a\x10.catalog.Product\x12C\n" +
-	"\rUpdateProduct\x12 .catalog.UpdateProductMetaParams\x1a\x10.catalog.Product\x12I\n" +
-	"\x13UpdateProductStatus\x12\".catalog.UpdateProductStatusParams\x1a\x0e.common.Status\x12b\n" +
+	"\rUpdateProduct\x12 .catalog.UpdateProductMetaParams\x1a\x10.catalog.Product\x12b\n" +
+	"\x14UpdateProductsStatus\x12#.catalog.UpdateProductsStatusParams\x1a%.catalog.UpdateProductsStatusResponse\x12b\n" +
 	"\x14UpdateProductsStocks\x12#.catalog.UpdateProductsStocksParams\x1a%.catalog.UpdateProductsStocksResponse\x12b\n" +
 	"\x14UpdateProductsPrices\x12#.catalog.UpdateProductsPricesParams\x1a%.catalog.UpdateProductsPricesResponse\x12U\n" +
-	"\x19CheckProductAvailableSlug\x12(.catalog.CheckProductAvailableSlugParams\x1a\x0e.common.Status\x12_\n" +
-	"\x1eToggleAttachProductsToCategory\x12-.catalog.ToggleAttachProductsToCategoryParams\x1a\x0e.common.Status\x12[\n" +
-	"\x1cToggleAttachProductsToBrands\x12+.catalog.ToggleAttachProductsToBrandsParams\x1a\x0e.common.Status\x12W\n" +
-	"\x1aToggleAttachProductsToTags\x12).catalog.ToggleAttachProductsToTagsParams\x1a\x0e.common.StatusB8Z6github.com/market-4-test/contract-go/catalog;catalogv1b\x06proto3"
+	"\x19CheckProductAvailableSlug\x12(.catalog.CheckProductAvailableSlugParams\x1a\x0e.common.Status\x12v\n" +
+	"\x18AttachProductsToCategory\x12-.catalog.ToggleAttachProductsToCategoryParams\x1a+.catalog.CommonToggleAttachProductsResponse\x12v\n" +
+	"\x18DetachProductsToCategory\x12-.catalog.ToggleAttachProductsToCategoryParams\x1a+.catalog.CommonToggleAttachProductsResponse\x12r\n" +
+	"\x16AttachProductsToBrands\x12+.catalog.ToggleAttachProductsToBrandsParams\x1a+.catalog.CommonToggleAttachProductsResponse\x12r\n" +
+	"\x16DetachProductsToBrands\x12+.catalog.ToggleAttachProductsToBrandsParams\x1a+.catalog.CommonToggleAttachProductsResponse\x12n\n" +
+	"\x14AttachProductsToTags\x12).catalog.ToggleAttachProductsToTagsParams\x1a+.catalog.CommonToggleAttachProductsResponse\x12n\n" +
+	"\x14DetachProductsToTags\x12).catalog.ToggleAttachProductsToTagsParams\x1a+.catalog.CommonToggleAttachProductsResponseB8Z6github.com/market-4-test/contract-go/catalog;catalogv1b\x06proto3"
 
 var file_catalog_catalog_proto_goTypes = []any{
 	(*GetTagsPaginateParams)(nil),                // 0: catalog.GetTagsPaginateParams
@@ -110,7 +113,7 @@ var file_catalog_catalog_proto_goTypes = []any{
 	(*GetProductByUuidParams)(nil),               // 31: catalog.GetProductByUuidParams
 	(*CreateProductParams)(nil),                  // 32: catalog.CreateProductParams
 	(*UpdateProductMetaParams)(nil),              // 33: catalog.UpdateProductMetaParams
-	(*UpdateProductStatusParams)(nil),            // 34: catalog.UpdateProductStatusParams
+	(*UpdateProductsStatusParams)(nil),           // 34: catalog.UpdateProductsStatusParams
 	(*UpdateProductsStocksParams)(nil),           // 35: catalog.UpdateProductsStocksParams
 	(*UpdateProductsPricesParams)(nil),           // 36: catalog.UpdateProductsPricesParams
 	(*CheckProductAvailableSlugParams)(nil),      // 37: catalog.CheckProductAvailableSlugParams
@@ -146,8 +149,10 @@ var file_catalog_catalog_proto_goTypes = []any{
 	(*GetProductsShortOffsetResponse)(nil),       // 67: catalog.GetProductsShortOffsetResponse
 	(*GetProductsResponse)(nil),                  // 68: catalog.GetProductsResponse
 	(*Product)(nil),                              // 69: catalog.Product
-	(*UpdateProductsStocksResponse)(nil),         // 70: catalog.UpdateProductsStocksResponse
-	(*UpdateProductsPricesResponse)(nil),         // 71: catalog.UpdateProductsPricesResponse
+	(*UpdateProductsStatusResponse)(nil),         // 70: catalog.UpdateProductsStatusResponse
+	(*UpdateProductsStocksResponse)(nil),         // 71: catalog.UpdateProductsStocksResponse
+	(*UpdateProductsPricesResponse)(nil),         // 72: catalog.UpdateProductsPricesResponse
+	(*CommonToggleAttachProductsResponse)(nil),   // 73: catalog.CommonToggleAttachProductsResponse
 }
 var file_catalog_catalog_proto_depIdxs = []int32{
 	0,  // 0: catalog.Catalog.GetTagsPaginate:input_type -> catalog.GetTagsPaginateParams
@@ -188,60 +193,66 @@ var file_catalog_catalog_proto_depIdxs = []int32{
 	31, // 35: catalog.Catalog.GetProductByUuid:input_type -> catalog.GetProductByUuidParams
 	32, // 36: catalog.Catalog.CreateProduct:input_type -> catalog.CreateProductParams
 	33, // 37: catalog.Catalog.UpdateProduct:input_type -> catalog.UpdateProductMetaParams
-	34, // 38: catalog.Catalog.UpdateProductStatus:input_type -> catalog.UpdateProductStatusParams
+	34, // 38: catalog.Catalog.UpdateProductsStatus:input_type -> catalog.UpdateProductsStatusParams
 	35, // 39: catalog.Catalog.UpdateProductsStocks:input_type -> catalog.UpdateProductsStocksParams
 	36, // 40: catalog.Catalog.UpdateProductsPrices:input_type -> catalog.UpdateProductsPricesParams
 	37, // 41: catalog.Catalog.CheckProductAvailableSlug:input_type -> catalog.CheckProductAvailableSlugParams
-	38, // 42: catalog.Catalog.ToggleAttachProductsToCategory:input_type -> catalog.ToggleAttachProductsToCategoryParams
-	39, // 43: catalog.Catalog.ToggleAttachProductsToBrands:input_type -> catalog.ToggleAttachProductsToBrandsParams
-	40, // 44: catalog.Catalog.ToggleAttachProductsToTags:input_type -> catalog.ToggleAttachProductsToTagsParams
-	41, // 45: catalog.Catalog.GetTagsPaginate:output_type -> catalog.GetTagsPaginateResponse
-	42, // 46: catalog.Catalog.GetTagsShortPaginate:output_type -> catalog.GetTagsShortPaginateResponse
-	43, // 47: catalog.Catalog.GetTagsOffset:output_type -> catalog.GetTagsOffsetResponse
-	44, // 48: catalog.Catalog.GetTagsShortOffset:output_type -> catalog.GetTagsShortOffsetResponse
-	45, // 49: catalog.Catalog.GetTagById:output_type -> catalog.Tag
-	45, // 50: catalog.Catalog.CreateTag:output_type -> catalog.Tag
-	45, // 51: catalog.Catalog.UpdateTag:output_type -> catalog.Tag
-	46, // 52: catalog.Catalog.DeleteTags:output_type -> catalog.DeleteTagsResponse
-	47, // 53: catalog.Catalog.CheckAvailableTagNames:output_type -> catalog.CheckAvailableTagNamesResponse
-	48, // 54: catalog.Catalog.GetBrandsPaginate:output_type -> catalog.GetBrandsPaginateResponse
-	49, // 55: catalog.Catalog.GetBrandsShortPaginate:output_type -> catalog.GetBrandsShortPaginateResponse
-	50, // 56: catalog.Catalog.GetBrandsOffset:output_type -> catalog.GetBrandsOffsetResponse
-	51, // 57: catalog.Catalog.GetBrandsShortOffset:output_type -> catalog.GetBrandsShortOffsetResponse
-	52, // 58: catalog.Catalog.GetBrandById:output_type -> catalog.Brand
-	53, // 59: catalog.Catalog.GetBrandShortById:output_type -> catalog.BrandShort
-	52, // 60: catalog.Catalog.CreateBrand:output_type -> catalog.Brand
-	52, // 61: catalog.Catalog.UpdateBrand:output_type -> catalog.Brand
-	54, // 62: catalog.Catalog.DeleteBrands:output_type -> catalog.DeleteBrandsResponse
-	55, // 63: catalog.Catalog.GetCategoriesPaginate:output_type -> catalog.GetCategoriesPaginateResponse
-	56, // 64: catalog.Catalog.GetCategoriesShortPaginate:output_type -> catalog.GetCategoriesShortPaginateResponse
-	57, // 65: catalog.Catalog.GetCategoriesOffset:output_type -> catalog.GetCategoriesOffsetResponse
-	58, // 66: catalog.Catalog.GetCategoriesShortOffset:output_type -> catalog.GetCategoriesShortOffsetResponse
-	59, // 67: catalog.Catalog.GetCategoryById:output_type -> catalog.Category
-	60, // 68: catalog.Catalog.GetCategoryShortById:output_type -> catalog.CategoryShort
-	59, // 69: catalog.Catalog.CreateCategory:output_type -> catalog.Category
-	59, // 70: catalog.Catalog.UpdateCategory:output_type -> catalog.Category
-	61, // 71: catalog.Catalog.DeleteCategories:output_type -> catalog.DeleteCategoriesResponse
-	62, // 72: catalog.Catalog.SetImageToCategory:output_type -> common.Status
-	63, // 73: catalog.Catalog.UpdateOrderSortToCategories:output_type -> catalog.UpdateOrderSortToCategoriesResponse
-	62, // 74: catalog.Catalog.CheckCategoryAvailableSlug:output_type -> common.Status
-	64, // 75: catalog.Catalog.GetProductsPaginate:output_type -> catalog.GetProductsPaginateResponse
-	65, // 76: catalog.Catalog.GetProductsShortPaginate:output_type -> catalog.GetProductsShortPaginateResponse
-	66, // 77: catalog.Catalog.GetProductsOffset:output_type -> catalog.GetProductsOffsetResponse
-	67, // 78: catalog.Catalog.GetProductsShortOffset:output_type -> catalog.GetProductsShortOffsetResponse
-	68, // 79: catalog.Catalog.GetProductsByUuids:output_type -> catalog.GetProductsResponse
-	69, // 80: catalog.Catalog.GetProductByUuid:output_type -> catalog.Product
-	69, // 81: catalog.Catalog.CreateProduct:output_type -> catalog.Product
-	69, // 82: catalog.Catalog.UpdateProduct:output_type -> catalog.Product
-	62, // 83: catalog.Catalog.UpdateProductStatus:output_type -> common.Status
-	70, // 84: catalog.Catalog.UpdateProductsStocks:output_type -> catalog.UpdateProductsStocksResponse
-	71, // 85: catalog.Catalog.UpdateProductsPrices:output_type -> catalog.UpdateProductsPricesResponse
-	62, // 86: catalog.Catalog.CheckProductAvailableSlug:output_type -> common.Status
-	62, // 87: catalog.Catalog.ToggleAttachProductsToCategory:output_type -> common.Status
-	62, // 88: catalog.Catalog.ToggleAttachProductsToBrands:output_type -> common.Status
-	62, // 89: catalog.Catalog.ToggleAttachProductsToTags:output_type -> common.Status
-	45, // [45:90] is the sub-list for method output_type
-	0,  // [0:45] is the sub-list for method input_type
+	38, // 42: catalog.Catalog.AttachProductsToCategory:input_type -> catalog.ToggleAttachProductsToCategoryParams
+	38, // 43: catalog.Catalog.DetachProductsToCategory:input_type -> catalog.ToggleAttachProductsToCategoryParams
+	39, // 44: catalog.Catalog.AttachProductsToBrands:input_type -> catalog.ToggleAttachProductsToBrandsParams
+	39, // 45: catalog.Catalog.DetachProductsToBrands:input_type -> catalog.ToggleAttachProductsToBrandsParams
+	40, // 46: catalog.Catalog.AttachProductsToTags:input_type -> catalog.ToggleAttachProductsToTagsParams
+	40, // 47: catalog.Catalog.DetachProductsToTags:input_type -> catalog.ToggleAttachProductsToTagsParams
+	41, // 48: catalog.Catalog.GetTagsPaginate:output_type -> catalog.GetTagsPaginateResponse
+	42, // 49: catalog.Catalog.GetTagsShortPaginate:output_type -> catalog.GetTagsShortPaginateResponse
+	43, // 50: catalog.Catalog.GetTagsOffset:output_type -> catalog.GetTagsOffsetResponse
+	44, // 51: catalog.Catalog.GetTagsShortOffset:output_type -> catalog.GetTagsShortOffsetResponse
+	45, // 52: catalog.Catalog.GetTagById:output_type -> catalog.Tag
+	45, // 53: catalog.Catalog.CreateTag:output_type -> catalog.Tag
+	45, // 54: catalog.Catalog.UpdateTag:output_type -> catalog.Tag
+	46, // 55: catalog.Catalog.DeleteTags:output_type -> catalog.DeleteTagsResponse
+	47, // 56: catalog.Catalog.CheckAvailableTagNames:output_type -> catalog.CheckAvailableTagNamesResponse
+	48, // 57: catalog.Catalog.GetBrandsPaginate:output_type -> catalog.GetBrandsPaginateResponse
+	49, // 58: catalog.Catalog.GetBrandsShortPaginate:output_type -> catalog.GetBrandsShortPaginateResponse
+	50, // 59: catalog.Catalog.GetBrandsOffset:output_type -> catalog.GetBrandsOffsetResponse
+	51, // 60: catalog.Catalog.GetBrandsShortOffset:output_type -> catalog.GetBrandsShortOffsetResponse
+	52, // 61: catalog.Catalog.GetBrandById:output_type -> catalog.Brand
+	53, // 62: catalog.Catalog.GetBrandShortById:output_type -> catalog.BrandShort
+	52, // 63: catalog.Catalog.CreateBrand:output_type -> catalog.Brand
+	52, // 64: catalog.Catalog.UpdateBrand:output_type -> catalog.Brand
+	54, // 65: catalog.Catalog.DeleteBrands:output_type -> catalog.DeleteBrandsResponse
+	55, // 66: catalog.Catalog.GetCategoriesPaginate:output_type -> catalog.GetCategoriesPaginateResponse
+	56, // 67: catalog.Catalog.GetCategoriesShortPaginate:output_type -> catalog.GetCategoriesShortPaginateResponse
+	57, // 68: catalog.Catalog.GetCategoriesOffset:output_type -> catalog.GetCategoriesOffsetResponse
+	58, // 69: catalog.Catalog.GetCategoriesShortOffset:output_type -> catalog.GetCategoriesShortOffsetResponse
+	59, // 70: catalog.Catalog.GetCategoryById:output_type -> catalog.Category
+	60, // 71: catalog.Catalog.GetCategoryShortById:output_type -> catalog.CategoryShort
+	59, // 72: catalog.Catalog.CreateCategory:output_type -> catalog.Category
+	59, // 73: catalog.Catalog.UpdateCategory:output_type -> catalog.Category
+	61, // 74: catalog.Catalog.DeleteCategories:output_type -> catalog.DeleteCategoriesResponse
+	62, // 75: catalog.Catalog.SetImageToCategory:output_type -> common.Status
+	63, // 76: catalog.Catalog.UpdateOrderSortToCategories:output_type -> catalog.UpdateOrderSortToCategoriesResponse
+	62, // 77: catalog.Catalog.CheckCategoryAvailableSlug:output_type -> common.Status
+	64, // 78: catalog.Catalog.GetProductsPaginate:output_type -> catalog.GetProductsPaginateResponse
+	65, // 79: catalog.Catalog.GetProductsShortPaginate:output_type -> catalog.GetProductsShortPaginateResponse
+	66, // 80: catalog.Catalog.GetProductsOffset:output_type -> catalog.GetProductsOffsetResponse
+	67, // 81: catalog.Catalog.GetProductsShortOffset:output_type -> catalog.GetProductsShortOffsetResponse
+	68, // 82: catalog.Catalog.GetProductsByUuids:output_type -> catalog.GetProductsResponse
+	69, // 83: catalog.Catalog.GetProductByUuid:output_type -> catalog.Product
+	69, // 84: catalog.Catalog.CreateProduct:output_type -> catalog.Product
+	69, // 85: catalog.Catalog.UpdateProduct:output_type -> catalog.Product
+	70, // 86: catalog.Catalog.UpdateProductsStatus:output_type -> catalog.UpdateProductsStatusResponse
+	71, // 87: catalog.Catalog.UpdateProductsStocks:output_type -> catalog.UpdateProductsStocksResponse
+	72, // 88: catalog.Catalog.UpdateProductsPrices:output_type -> catalog.UpdateProductsPricesResponse
+	62, // 89: catalog.Catalog.CheckProductAvailableSlug:output_type -> common.Status
+	73, // 90: catalog.Catalog.AttachProductsToCategory:output_type -> catalog.CommonToggleAttachProductsResponse
+	73, // 91: catalog.Catalog.DetachProductsToCategory:output_type -> catalog.CommonToggleAttachProductsResponse
+	73, // 92: catalog.Catalog.AttachProductsToBrands:output_type -> catalog.CommonToggleAttachProductsResponse
+	73, // 93: catalog.Catalog.DetachProductsToBrands:output_type -> catalog.CommonToggleAttachProductsResponse
+	73, // 94: catalog.Catalog.AttachProductsToTags:output_type -> catalog.CommonToggleAttachProductsResponse
+	73, // 95: catalog.Catalog.DetachProductsToTags:output_type -> catalog.CommonToggleAttachProductsResponse
+	48, // [48:96] is the sub-list for method output_type
+	0,  // [0:48] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name

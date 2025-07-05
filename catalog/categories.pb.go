@@ -1133,7 +1133,7 @@ func (x *StatusCategory) GetStatus() bool {
 
 type DeleteCategoriesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	List          *StatusCategory        `protobuf:"bytes,1,opt,name=list,proto3" json:"list,omitempty"`
+	List          []*StatusCategory      `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1168,7 +1168,7 @@ func (*DeleteCategoriesResponse) Descriptor() ([]byte, []int) {
 	return file_catalog_categories_proto_rawDescGZIP(), []int{21}
 }
 
-func (x *DeleteCategoriesResponse) GetList() *StatusCategory {
+func (x *DeleteCategoriesResponse) GetList() []*StatusCategory {
 	if x != nil {
 		return x.List
 	}
@@ -1177,7 +1177,7 @@ func (x *DeleteCategoriesResponse) GetList() *StatusCategory {
 
 type UpdateOrderSortToCategoriesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	List          *StatusCategory        `protobuf:"bytes,1,opt,name=list,proto3" json:"list,omitempty"`
+	List          []*StatusCategory      `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1212,7 +1212,7 @@ func (*UpdateOrderSortToCategoriesResponse) Descriptor() ([]byte, []int) {
 	return file_catalog_categories_proto_rawDescGZIP(), []int{22}
 }
 
-func (x *UpdateOrderSortToCategoriesResponse) GetList() *StatusCategory {
+func (x *UpdateOrderSortToCategoriesResponse) GetList() []*StatusCategory {
 	if x != nil {
 		return x.List
 	}
@@ -1306,9 +1306,9 @@ const file_catalog_categories_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\bR\x06status\"G\n" +
 	"\x18DeleteCategoriesResponse\x12+\n" +
-	"\x04list\x18\x01 \x01(\v2\x17.catalog.StatusCategoryR\x04list\"R\n" +
+	"\x04list\x18\x01 \x03(\v2\x17.catalog.StatusCategoryR\x04list\"R\n" +
 	"#UpdateOrderSortToCategoriesResponse\x12+\n" +
-	"\x04list\x18\x01 \x01(\v2\x17.catalog.StatusCategoryR\x04listB8Z6github.com/market-4-test/contract-go/catalog;catalogv1b\x06proto3"
+	"\x04list\x18\x01 \x03(\v2\x17.catalog.StatusCategoryR\x04listB8Z6github.com/market-4-test/contract-go/catalog;catalogv1b\x06proto3"
 
 var (
 	file_catalog_categories_proto_rawDescOnce sync.Once

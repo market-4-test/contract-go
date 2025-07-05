@@ -47,8 +47,8 @@ const file_catalog_catalog_proto_rawDesc = "" +
 	"\vCreateBrand\x12\x1a.catalog.CreateBrandParams\x1a\x0e.catalog.Brand\x129\n" +
 	"\vUpdateBrand\x12\x1a.catalog.UpdateBrandParams\x1a\x0e.catalog.Brand\x12J\n" +
 	"\fDeleteBrands\x12\x1b.catalog.DeleteBrandsParams\x1a\x1d.catalog.DeleteBrandsResponse\x12e\n" +
-	"\x15GetCategoriesPaginate\x12$.catalog.GetCategoriesPaginateParams\x1a&.catalog.GetPaginateCategoriesResponse\x12o\n" +
-	"\x1aGetCategoriesShortPaginate\x12$.catalog.GetCategoriesPaginateParams\x1a+.catalog.GetPaginateCategoriesShortResponse\x12_\n" +
+	"\x15GetCategoriesPaginate\x12$.catalog.GetCategoriesPaginateParams\x1a&.catalog.GetCategoriesPaginateResponse\x12o\n" +
+	"\x1aGetCategoriesShortPaginate\x12$.catalog.GetCategoriesPaginateParams\x1a+.catalog.GetCategoriesPaginateShortResponse\x12_\n" +
 	"\x13GetCategoriesOffset\x12\".catalog.GetCategoriesOffsetParams\x1a$.catalog.GetCategoriesOffsetResponse\x12n\n" +
 	"\x18GetCategoriesShortOffset\x12'.catalog.GetCategoriesShortOffsetParams\x1a).catalog.GetCategoriesShortOffsetResponse\x12D\n" +
 	"\x0fGetCategoryById\x12\x1e.catalog.GetCategoryByIdParams\x1a\x11.catalog.Category\x12N\n" +
@@ -129,8 +129,8 @@ var file_catalog_catalog_proto_goTypes = []any{
 	(*Brand)(nil),                                // 51: catalog.Brand
 	(*BrandShort)(nil),                           // 52: catalog.BrandShort
 	(*DeleteBrandsResponse)(nil),                 // 53: catalog.DeleteBrandsResponse
-	(*GetPaginateCategoriesResponse)(nil),        // 54: catalog.GetPaginateCategoriesResponse
-	(*GetPaginateCategoriesShortResponse)(nil),   // 55: catalog.GetPaginateCategoriesShortResponse
+	(*GetCategoriesPaginateResponse)(nil),        // 54: catalog.GetCategoriesPaginateResponse
+	(*GetCategoriesPaginateShortResponse)(nil),   // 55: catalog.GetCategoriesPaginateShortResponse
 	(*GetCategoriesOffsetResponse)(nil),          // 56: catalog.GetCategoriesOffsetResponse
 	(*GetCategoriesShortOffsetResponse)(nil),     // 57: catalog.GetCategoriesShortOffsetResponse
 	(*Category)(nil),                             // 58: catalog.Category
@@ -209,8 +209,8 @@ var file_catalog_catalog_proto_depIdxs = []int32{
 	51, // 59: catalog.Catalog.CreateBrand:output_type -> catalog.Brand
 	51, // 60: catalog.Catalog.UpdateBrand:output_type -> catalog.Brand
 	53, // 61: catalog.Catalog.DeleteBrands:output_type -> catalog.DeleteBrandsResponse
-	54, // 62: catalog.Catalog.GetCategoriesPaginate:output_type -> catalog.GetPaginateCategoriesResponse
-	55, // 63: catalog.Catalog.GetCategoriesShortPaginate:output_type -> catalog.GetPaginateCategoriesShortResponse
+	54, // 62: catalog.Catalog.GetCategoriesPaginate:output_type -> catalog.GetCategoriesPaginateResponse
+	55, // 63: catalog.Catalog.GetCategoriesShortPaginate:output_type -> catalog.GetCategoriesPaginateShortResponse
 	56, // 64: catalog.Catalog.GetCategoriesOffset:output_type -> catalog.GetCategoriesOffsetResponse
 	57, // 65: catalog.Catalog.GetCategoriesShortOffset:output_type -> catalog.GetCategoriesShortOffsetResponse
 	58, // 66: catalog.Catalog.GetCategoryById:output_type -> catalog.Category

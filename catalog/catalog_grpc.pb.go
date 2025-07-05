@@ -91,8 +91,8 @@ type CatalogClient interface {
 	UpdateBrand(ctx context.Context, in *UpdateBrandParams, opts ...grpc.CallOption) (*Brand, error)
 	DeleteBrands(ctx context.Context, in *DeleteBrandsParams, opts ...grpc.CallOption) (*DeleteBrandsResponse, error)
 	// Categories
-	GetCategoriesPaginate(ctx context.Context, in *GetCategoriesPaginateParams, opts ...grpc.CallOption) (*GetPaginateCategoriesResponse, error)
-	GetCategoriesShortPaginate(ctx context.Context, in *GetCategoriesPaginateParams, opts ...grpc.CallOption) (*GetPaginateCategoriesShortResponse, error)
+	GetCategoriesPaginate(ctx context.Context, in *GetCategoriesPaginateParams, opts ...grpc.CallOption) (*GetCategoriesPaginateResponse, error)
+	GetCategoriesShortPaginate(ctx context.Context, in *GetCategoriesPaginateParams, opts ...grpc.CallOption) (*GetCategoriesPaginateShortResponse, error)
 	GetCategoriesOffset(ctx context.Context, in *GetCategoriesOffsetParams, opts ...grpc.CallOption) (*GetCategoriesOffsetResponse, error)
 	GetCategoriesShortOffset(ctx context.Context, in *GetCategoriesShortOffsetParams, opts ...grpc.CallOption) (*GetCategoriesShortOffsetResponse, error)
 	GetCategoryById(ctx context.Context, in *GetCategoryByIdParams, opts ...grpc.CallOption) (*Category, error)
@@ -308,9 +308,9 @@ func (c *catalogClient) DeleteBrands(ctx context.Context, in *DeleteBrandsParams
 	return out, nil
 }
 
-func (c *catalogClient) GetCategoriesPaginate(ctx context.Context, in *GetCategoriesPaginateParams, opts ...grpc.CallOption) (*GetPaginateCategoriesResponse, error) {
+func (c *catalogClient) GetCategoriesPaginate(ctx context.Context, in *GetCategoriesPaginateParams, opts ...grpc.CallOption) (*GetCategoriesPaginateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetPaginateCategoriesResponse)
+	out := new(GetCategoriesPaginateResponse)
 	err := c.cc.Invoke(ctx, Catalog_GetCategoriesPaginate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -318,9 +318,9 @@ func (c *catalogClient) GetCategoriesPaginate(ctx context.Context, in *GetCatego
 	return out, nil
 }
 
-func (c *catalogClient) GetCategoriesShortPaginate(ctx context.Context, in *GetCategoriesPaginateParams, opts ...grpc.CallOption) (*GetPaginateCategoriesShortResponse, error) {
+func (c *catalogClient) GetCategoriesShortPaginate(ctx context.Context, in *GetCategoriesPaginateParams, opts ...grpc.CallOption) (*GetCategoriesPaginateShortResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetPaginateCategoriesShortResponse)
+	out := new(GetCategoriesPaginateShortResponse)
 	err := c.cc.Invoke(ctx, Catalog_GetCategoriesShortPaginate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -593,8 +593,8 @@ type CatalogServer interface {
 	UpdateBrand(context.Context, *UpdateBrandParams) (*Brand, error)
 	DeleteBrands(context.Context, *DeleteBrandsParams) (*DeleteBrandsResponse, error)
 	// Categories
-	GetCategoriesPaginate(context.Context, *GetCategoriesPaginateParams) (*GetPaginateCategoriesResponse, error)
-	GetCategoriesShortPaginate(context.Context, *GetCategoriesPaginateParams) (*GetPaginateCategoriesShortResponse, error)
+	GetCategoriesPaginate(context.Context, *GetCategoriesPaginateParams) (*GetCategoriesPaginateResponse, error)
+	GetCategoriesShortPaginate(context.Context, *GetCategoriesPaginateParams) (*GetCategoriesPaginateShortResponse, error)
 	GetCategoriesOffset(context.Context, *GetCategoriesOffsetParams) (*GetCategoriesOffsetResponse, error)
 	GetCategoriesShortOffset(context.Context, *GetCategoriesShortOffsetParams) (*GetCategoriesShortOffsetResponse, error)
 	GetCategoryById(context.Context, *GetCategoryByIdParams) (*Category, error)
@@ -684,10 +684,10 @@ func (UnimplementedCatalogServer) UpdateBrand(context.Context, *UpdateBrandParam
 func (UnimplementedCatalogServer) DeleteBrands(context.Context, *DeleteBrandsParams) (*DeleteBrandsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteBrands not implemented")
 }
-func (UnimplementedCatalogServer) GetCategoriesPaginate(context.Context, *GetCategoriesPaginateParams) (*GetPaginateCategoriesResponse, error) {
+func (UnimplementedCatalogServer) GetCategoriesPaginate(context.Context, *GetCategoriesPaginateParams) (*GetCategoriesPaginateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCategoriesPaginate not implemented")
 }
-func (UnimplementedCatalogServer) GetCategoriesShortPaginate(context.Context, *GetCategoriesPaginateParams) (*GetPaginateCategoriesShortResponse, error) {
+func (UnimplementedCatalogServer) GetCategoriesShortPaginate(context.Context, *GetCategoriesPaginateParams) (*GetCategoriesPaginateShortResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCategoriesShortPaginate not implemented")
 }
 func (UnimplementedCatalogServer) GetCategoriesOffset(context.Context, *GetCategoriesOffsetParams) (*GetCategoriesOffsetResponse, error) {

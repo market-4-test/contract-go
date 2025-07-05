@@ -25,7 +25,7 @@ var File_catalog_catalog_proto protoreflect.FileDescriptor
 
 const file_catalog_catalog_proto_rawDesc = "" +
 	"\n" +
-	"\x15catalog/catalog.proto\x12\acatalog\x1a\x13common/common.proto\x1a\x16catalog/products.proto\x1a\x18catalog/categories.proto\x1a\x12catalog/tags.proto\x1a\x14catalog/brands.proto2\xa6!\n" +
+	"\x15catalog/catalog.proto\x12\acatalog\x1a\x13common/common.proto\x1a\x16catalog/products.proto\x1a\x18catalog/categories.proto\x1a\x12catalog/tags.proto\x1a\x14catalog/brands.proto2\xa2!\n" +
 	"\aCatalog\x12S\n" +
 	"\x0fGetTagsPaginate\x12\x1e.catalog.GetTagsPaginateParams\x1a .catalog.GetTagsPaginateResponse\x12b\n" +
 	"\x14GetTagsShortPaginate\x12#.catalog.GetTagsShortPaginateParams\x1a%.catalog.GetTagsShortPaginateResponse\x12M\n" +
@@ -72,11 +72,11 @@ const file_catalog_catalog_proto_rawDesc = "" +
 	"\x14UpdateProductsPrices\x12#.catalog.UpdateProductsPricesParams\x1a%.catalog.UpdateProductsPricesResponse\x12U\n" +
 	"\x19CheckProductAvailableSlug\x12(.catalog.CheckProductAvailableSlugParams\x1a\x0e.common.Status\x12v\n" +
 	"\x18AttachProductsToCategory\x12-.catalog.ToggleAttachProductsToCategoryParams\x1a+.catalog.CommonToggleAttachProductsResponse\x12v\n" +
-	"\x18DetachProductsToCategory\x12-.catalog.ToggleAttachProductsToCategoryParams\x1a+.catalog.CommonToggleAttachProductsResponse\x12r\n" +
-	"\x16AttachProductsToBrands\x12+.catalog.ToggleAttachProductsToBrandsParams\x1a+.catalog.CommonToggleAttachProductsResponse\x12r\n" +
-	"\x16DetachProductsToBrands\x12+.catalog.ToggleAttachProductsToBrandsParams\x1a+.catalog.CommonToggleAttachProductsResponse\x12n\n" +
-	"\x14AttachProductsToTags\x12).catalog.ToggleAttachProductsToTagsParams\x1a+.catalog.CommonToggleAttachProductsResponse\x12n\n" +
-	"\x14DetachProductsToTags\x12).catalog.ToggleAttachProductsToTagsParams\x1a+.catalog.CommonToggleAttachProductsResponseB8Z6github.com/market-4-test/contract-go/catalog;catalogv1b\x06proto3"
+	"\x18DetachProductsToCategory\x12-.catalog.ToggleAttachProductsToCategoryParams\x1a+.catalog.CommonToggleAttachProductsResponse\x12q\n" +
+	"\x15AttachProductsToBrand\x12+.catalog.ToggleAttachProductsToBrandsParams\x1a+.catalog.CommonToggleAttachProductsResponse\x12q\n" +
+	"\x15DetachProductsToBrand\x12+.catalog.ToggleAttachProductsToBrandsParams\x1a+.catalog.CommonToggleAttachProductsResponse\x12m\n" +
+	"\x13AttachProductsToTag\x12).catalog.ToggleAttachProductsToTagsParams\x1a+.catalog.CommonToggleAttachProductsResponse\x12m\n" +
+	"\x13DetachProductsToTag\x12).catalog.ToggleAttachProductsToTagsParams\x1a+.catalog.CommonToggleAttachProductsResponseB8Z6github.com/market-4-test/contract-go/catalog;catalogv1b\x06proto3"
 
 var file_catalog_catalog_proto_goTypes = []any{
 	(*GetTagsPaginateParams)(nil),                // 0: catalog.GetTagsPaginateParams
@@ -199,10 +199,10 @@ var file_catalog_catalog_proto_depIdxs = []int32{
 	37, // 41: catalog.Catalog.CheckProductAvailableSlug:input_type -> catalog.CheckProductAvailableSlugParams
 	38, // 42: catalog.Catalog.AttachProductsToCategory:input_type -> catalog.ToggleAttachProductsToCategoryParams
 	38, // 43: catalog.Catalog.DetachProductsToCategory:input_type -> catalog.ToggleAttachProductsToCategoryParams
-	39, // 44: catalog.Catalog.AttachProductsToBrands:input_type -> catalog.ToggleAttachProductsToBrandsParams
-	39, // 45: catalog.Catalog.DetachProductsToBrands:input_type -> catalog.ToggleAttachProductsToBrandsParams
-	40, // 46: catalog.Catalog.AttachProductsToTags:input_type -> catalog.ToggleAttachProductsToTagsParams
-	40, // 47: catalog.Catalog.DetachProductsToTags:input_type -> catalog.ToggleAttachProductsToTagsParams
+	39, // 44: catalog.Catalog.AttachProductsToBrand:input_type -> catalog.ToggleAttachProductsToBrandsParams
+	39, // 45: catalog.Catalog.DetachProductsToBrand:input_type -> catalog.ToggleAttachProductsToBrandsParams
+	40, // 46: catalog.Catalog.AttachProductsToTag:input_type -> catalog.ToggleAttachProductsToTagsParams
+	40, // 47: catalog.Catalog.DetachProductsToTag:input_type -> catalog.ToggleAttachProductsToTagsParams
 	41, // 48: catalog.Catalog.GetTagsPaginate:output_type -> catalog.GetTagsPaginateResponse
 	42, // 49: catalog.Catalog.GetTagsShortPaginate:output_type -> catalog.GetTagsShortPaginateResponse
 	43, // 50: catalog.Catalog.GetTagsOffset:output_type -> catalog.GetTagsOffsetResponse
@@ -247,10 +247,10 @@ var file_catalog_catalog_proto_depIdxs = []int32{
 	62, // 89: catalog.Catalog.CheckProductAvailableSlug:output_type -> common.Status
 	73, // 90: catalog.Catalog.AttachProductsToCategory:output_type -> catalog.CommonToggleAttachProductsResponse
 	73, // 91: catalog.Catalog.DetachProductsToCategory:output_type -> catalog.CommonToggleAttachProductsResponse
-	73, // 92: catalog.Catalog.AttachProductsToBrands:output_type -> catalog.CommonToggleAttachProductsResponse
-	73, // 93: catalog.Catalog.DetachProductsToBrands:output_type -> catalog.CommonToggleAttachProductsResponse
-	73, // 94: catalog.Catalog.AttachProductsToTags:output_type -> catalog.CommonToggleAttachProductsResponse
-	73, // 95: catalog.Catalog.DetachProductsToTags:output_type -> catalog.CommonToggleAttachProductsResponse
+	73, // 92: catalog.Catalog.AttachProductsToBrand:output_type -> catalog.CommonToggleAttachProductsResponse
+	73, // 93: catalog.Catalog.DetachProductsToBrand:output_type -> catalog.CommonToggleAttachProductsResponse
+	73, // 94: catalog.Catalog.AttachProductsToTag:output_type -> catalog.CommonToggleAttachProductsResponse
+	73, // 95: catalog.Catalog.DetachProductsToTag:output_type -> catalog.CommonToggleAttachProductsResponse
 	48, // [48:96] is the sub-list for method output_type
 	0,  // [0:48] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name

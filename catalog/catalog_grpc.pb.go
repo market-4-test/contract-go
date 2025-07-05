@@ -64,10 +64,10 @@ const (
 	Catalog_CheckProductAvailableSlug_FullMethodName   = "/catalog.Catalog/CheckProductAvailableSlug"
 	Catalog_AttachProductsToCategory_FullMethodName    = "/catalog.Catalog/AttachProductsToCategory"
 	Catalog_DetachProductsToCategory_FullMethodName    = "/catalog.Catalog/DetachProductsToCategory"
-	Catalog_AttachProductsToBrands_FullMethodName      = "/catalog.Catalog/AttachProductsToBrands"
-	Catalog_DetachProductsToBrands_FullMethodName      = "/catalog.Catalog/DetachProductsToBrands"
-	Catalog_AttachProductsToTags_FullMethodName        = "/catalog.Catalog/AttachProductsToTags"
-	Catalog_DetachProductsToTags_FullMethodName        = "/catalog.Catalog/DetachProductsToTags"
+	Catalog_AttachProductsToBrand_FullMethodName       = "/catalog.Catalog/AttachProductsToBrand"
+	Catalog_DetachProductsToBrand_FullMethodName       = "/catalog.Catalog/DetachProductsToBrand"
+	Catalog_AttachProductsToTag_FullMethodName         = "/catalog.Catalog/AttachProductsToTag"
+	Catalog_DetachProductsToTag_FullMethodName         = "/catalog.Catalog/DetachProductsToTag"
 )
 
 // CatalogClient is the client API for Catalog service.
@@ -122,10 +122,10 @@ type CatalogClient interface {
 	CheckProductAvailableSlug(ctx context.Context, in *CheckProductAvailableSlugParams, opts ...grpc.CallOption) (*common.Status, error)
 	AttachProductsToCategory(ctx context.Context, in *ToggleAttachProductsToCategoryParams, opts ...grpc.CallOption) (*CommonToggleAttachProductsResponse, error)
 	DetachProductsToCategory(ctx context.Context, in *ToggleAttachProductsToCategoryParams, opts ...grpc.CallOption) (*CommonToggleAttachProductsResponse, error)
-	AttachProductsToBrands(ctx context.Context, in *ToggleAttachProductsToBrandsParams, opts ...grpc.CallOption) (*CommonToggleAttachProductsResponse, error)
-	DetachProductsToBrands(ctx context.Context, in *ToggleAttachProductsToBrandsParams, opts ...grpc.CallOption) (*CommonToggleAttachProductsResponse, error)
-	AttachProductsToTags(ctx context.Context, in *ToggleAttachProductsToTagsParams, opts ...grpc.CallOption) (*CommonToggleAttachProductsResponse, error)
-	DetachProductsToTags(ctx context.Context, in *ToggleAttachProductsToTagsParams, opts ...grpc.CallOption) (*CommonToggleAttachProductsResponse, error)
+	AttachProductsToBrand(ctx context.Context, in *ToggleAttachProductsToBrandsParams, opts ...grpc.CallOption) (*CommonToggleAttachProductsResponse, error)
+	DetachProductsToBrand(ctx context.Context, in *ToggleAttachProductsToBrandsParams, opts ...grpc.CallOption) (*CommonToggleAttachProductsResponse, error)
+	AttachProductsToTag(ctx context.Context, in *ToggleAttachProductsToTagsParams, opts ...grpc.CallOption) (*CommonToggleAttachProductsResponse, error)
+	DetachProductsToTag(ctx context.Context, in *ToggleAttachProductsToTagsParams, opts ...grpc.CallOption) (*CommonToggleAttachProductsResponse, error)
 }
 
 type catalogClient struct {
@@ -576,40 +576,40 @@ func (c *catalogClient) DetachProductsToCategory(ctx context.Context, in *Toggle
 	return out, nil
 }
 
-func (c *catalogClient) AttachProductsToBrands(ctx context.Context, in *ToggleAttachProductsToBrandsParams, opts ...grpc.CallOption) (*CommonToggleAttachProductsResponse, error) {
+func (c *catalogClient) AttachProductsToBrand(ctx context.Context, in *ToggleAttachProductsToBrandsParams, opts ...grpc.CallOption) (*CommonToggleAttachProductsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CommonToggleAttachProductsResponse)
-	err := c.cc.Invoke(ctx, Catalog_AttachProductsToBrands_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Catalog_AttachProductsToBrand_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *catalogClient) DetachProductsToBrands(ctx context.Context, in *ToggleAttachProductsToBrandsParams, opts ...grpc.CallOption) (*CommonToggleAttachProductsResponse, error) {
+func (c *catalogClient) DetachProductsToBrand(ctx context.Context, in *ToggleAttachProductsToBrandsParams, opts ...grpc.CallOption) (*CommonToggleAttachProductsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CommonToggleAttachProductsResponse)
-	err := c.cc.Invoke(ctx, Catalog_DetachProductsToBrands_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Catalog_DetachProductsToBrand_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *catalogClient) AttachProductsToTags(ctx context.Context, in *ToggleAttachProductsToTagsParams, opts ...grpc.CallOption) (*CommonToggleAttachProductsResponse, error) {
+func (c *catalogClient) AttachProductsToTag(ctx context.Context, in *ToggleAttachProductsToTagsParams, opts ...grpc.CallOption) (*CommonToggleAttachProductsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CommonToggleAttachProductsResponse)
-	err := c.cc.Invoke(ctx, Catalog_AttachProductsToTags_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Catalog_AttachProductsToTag_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *catalogClient) DetachProductsToTags(ctx context.Context, in *ToggleAttachProductsToTagsParams, opts ...grpc.CallOption) (*CommonToggleAttachProductsResponse, error) {
+func (c *catalogClient) DetachProductsToTag(ctx context.Context, in *ToggleAttachProductsToTagsParams, opts ...grpc.CallOption) (*CommonToggleAttachProductsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CommonToggleAttachProductsResponse)
-	err := c.cc.Invoke(ctx, Catalog_DetachProductsToTags_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Catalog_DetachProductsToTag_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -668,10 +668,10 @@ type CatalogServer interface {
 	CheckProductAvailableSlug(context.Context, *CheckProductAvailableSlugParams) (*common.Status, error)
 	AttachProductsToCategory(context.Context, *ToggleAttachProductsToCategoryParams) (*CommonToggleAttachProductsResponse, error)
 	DetachProductsToCategory(context.Context, *ToggleAttachProductsToCategoryParams) (*CommonToggleAttachProductsResponse, error)
-	AttachProductsToBrands(context.Context, *ToggleAttachProductsToBrandsParams) (*CommonToggleAttachProductsResponse, error)
-	DetachProductsToBrands(context.Context, *ToggleAttachProductsToBrandsParams) (*CommonToggleAttachProductsResponse, error)
-	AttachProductsToTags(context.Context, *ToggleAttachProductsToTagsParams) (*CommonToggleAttachProductsResponse, error)
-	DetachProductsToTags(context.Context, *ToggleAttachProductsToTagsParams) (*CommonToggleAttachProductsResponse, error)
+	AttachProductsToBrand(context.Context, *ToggleAttachProductsToBrandsParams) (*CommonToggleAttachProductsResponse, error)
+	DetachProductsToBrand(context.Context, *ToggleAttachProductsToBrandsParams) (*CommonToggleAttachProductsResponse, error)
+	AttachProductsToTag(context.Context, *ToggleAttachProductsToTagsParams) (*CommonToggleAttachProductsResponse, error)
+	DetachProductsToTag(context.Context, *ToggleAttachProductsToTagsParams) (*CommonToggleAttachProductsResponse, error)
 	mustEmbedUnimplementedCatalogServer()
 }
 
@@ -814,17 +814,17 @@ func (UnimplementedCatalogServer) AttachProductsToCategory(context.Context, *Tog
 func (UnimplementedCatalogServer) DetachProductsToCategory(context.Context, *ToggleAttachProductsToCategoryParams) (*CommonToggleAttachProductsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DetachProductsToCategory not implemented")
 }
-func (UnimplementedCatalogServer) AttachProductsToBrands(context.Context, *ToggleAttachProductsToBrandsParams) (*CommonToggleAttachProductsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AttachProductsToBrands not implemented")
+func (UnimplementedCatalogServer) AttachProductsToBrand(context.Context, *ToggleAttachProductsToBrandsParams) (*CommonToggleAttachProductsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AttachProductsToBrand not implemented")
 }
-func (UnimplementedCatalogServer) DetachProductsToBrands(context.Context, *ToggleAttachProductsToBrandsParams) (*CommonToggleAttachProductsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DetachProductsToBrands not implemented")
+func (UnimplementedCatalogServer) DetachProductsToBrand(context.Context, *ToggleAttachProductsToBrandsParams) (*CommonToggleAttachProductsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DetachProductsToBrand not implemented")
 }
-func (UnimplementedCatalogServer) AttachProductsToTags(context.Context, *ToggleAttachProductsToTagsParams) (*CommonToggleAttachProductsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AttachProductsToTags not implemented")
+func (UnimplementedCatalogServer) AttachProductsToTag(context.Context, *ToggleAttachProductsToTagsParams) (*CommonToggleAttachProductsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AttachProductsToTag not implemented")
 }
-func (UnimplementedCatalogServer) DetachProductsToTags(context.Context, *ToggleAttachProductsToTagsParams) (*CommonToggleAttachProductsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DetachProductsToTags not implemented")
+func (UnimplementedCatalogServer) DetachProductsToTag(context.Context, *ToggleAttachProductsToTagsParams) (*CommonToggleAttachProductsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DetachProductsToTag not implemented")
 }
 func (UnimplementedCatalogServer) mustEmbedUnimplementedCatalogServer() {}
 func (UnimplementedCatalogServer) testEmbeddedByValue()                 {}
@@ -1639,74 +1639,74 @@ func _Catalog_DetachProductsToCategory_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Catalog_AttachProductsToBrands_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Catalog_AttachProductsToBrand_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ToggleAttachProductsToBrandsParams)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CatalogServer).AttachProductsToBrands(ctx, in)
+		return srv.(CatalogServer).AttachProductsToBrand(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Catalog_AttachProductsToBrands_FullMethodName,
+		FullMethod: Catalog_AttachProductsToBrand_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatalogServer).AttachProductsToBrands(ctx, req.(*ToggleAttachProductsToBrandsParams))
+		return srv.(CatalogServer).AttachProductsToBrand(ctx, req.(*ToggleAttachProductsToBrandsParams))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Catalog_DetachProductsToBrands_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Catalog_DetachProductsToBrand_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ToggleAttachProductsToBrandsParams)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CatalogServer).DetachProductsToBrands(ctx, in)
+		return srv.(CatalogServer).DetachProductsToBrand(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Catalog_DetachProductsToBrands_FullMethodName,
+		FullMethod: Catalog_DetachProductsToBrand_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatalogServer).DetachProductsToBrands(ctx, req.(*ToggleAttachProductsToBrandsParams))
+		return srv.(CatalogServer).DetachProductsToBrand(ctx, req.(*ToggleAttachProductsToBrandsParams))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Catalog_AttachProductsToTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Catalog_AttachProductsToTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ToggleAttachProductsToTagsParams)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CatalogServer).AttachProductsToTags(ctx, in)
+		return srv.(CatalogServer).AttachProductsToTag(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Catalog_AttachProductsToTags_FullMethodName,
+		FullMethod: Catalog_AttachProductsToTag_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatalogServer).AttachProductsToTags(ctx, req.(*ToggleAttachProductsToTagsParams))
+		return srv.(CatalogServer).AttachProductsToTag(ctx, req.(*ToggleAttachProductsToTagsParams))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Catalog_DetachProductsToTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Catalog_DetachProductsToTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ToggleAttachProductsToTagsParams)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CatalogServer).DetachProductsToTags(ctx, in)
+		return srv.(CatalogServer).DetachProductsToTag(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Catalog_DetachProductsToTags_FullMethodName,
+		FullMethod: Catalog_DetachProductsToTag_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatalogServer).DetachProductsToTags(ctx, req.(*ToggleAttachProductsToTagsParams))
+		return srv.(CatalogServer).DetachProductsToTag(ctx, req.(*ToggleAttachProductsToTagsParams))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1895,20 +1895,20 @@ var Catalog_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Catalog_DetachProductsToCategory_Handler,
 		},
 		{
-			MethodName: "AttachProductsToBrands",
-			Handler:    _Catalog_AttachProductsToBrands_Handler,
+			MethodName: "AttachProductsToBrand",
+			Handler:    _Catalog_AttachProductsToBrand_Handler,
 		},
 		{
-			MethodName: "DetachProductsToBrands",
-			Handler:    _Catalog_DetachProductsToBrands_Handler,
+			MethodName: "DetachProductsToBrand",
+			Handler:    _Catalog_DetachProductsToBrand_Handler,
 		},
 		{
-			MethodName: "AttachProductsToTags",
-			Handler:    _Catalog_AttachProductsToTags_Handler,
+			MethodName: "AttachProductsToTag",
+			Handler:    _Catalog_AttachProductsToTag_Handler,
 		},
 		{
-			MethodName: "DetachProductsToTags",
-			Handler:    _Catalog_DetachProductsToTags_Handler,
+			MethodName: "DetachProductsToTag",
+			Handler:    _Catalog_DetachProductsToTag_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

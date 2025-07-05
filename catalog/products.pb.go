@@ -1853,7 +1853,7 @@ func (x *CheckProductAvailableSlugParams) GetSlug() string {
 type ToggleAttachProductsToCategories struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ProductUuids  [][]byte               `protobuf:"bytes,1,rep,name=product_uuids,json=productUuids,proto3" json:"product_uuids,omitempty"`
-	CategoryIds   []int32                `protobuf:"varint,2,rep,packed,name=category_ids,json=categoryIds,proto3" json:"category_ids,omitempty"`
+	CategoryIds   int32                  `protobuf:"varint,2,opt,name=category_ids,json=categoryIds,proto3" json:"category_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1895,11 +1895,11 @@ func (x *ToggleAttachProductsToCategories) GetProductUuids() [][]byte {
 	return nil
 }
 
-func (x *ToggleAttachProductsToCategories) GetCategoryIds() []int32 {
+func (x *ToggleAttachProductsToCategories) GetCategoryIds() int32 {
 	if x != nil {
 		return x.CategoryIds
 	}
-	return nil
+	return 0
 }
 
 type ToggleAttachProductsToCategoryParams struct {
@@ -2045,7 +2045,7 @@ func (x *CommonToggleAttachProductsResponse) GetStatuses() *CommonToggleAttachPr
 type ToggleAttachProductsToBrands struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ProductUuids  [][]byte               `protobuf:"bytes,1,rep,name=product_uuids,json=productUuids,proto3" json:"product_uuids,omitempty"`
-	BrandIds      []int32                `protobuf:"varint,2,rep,packed,name=brand_ids,json=brandIds,proto3" json:"brand_ids,omitempty"`
+	BrandIds      int32                  `protobuf:"varint,2,opt,name=brand_ids,json=brandIds,proto3" json:"brand_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2087,11 +2087,11 @@ func (x *ToggleAttachProductsToBrands) GetProductUuids() [][]byte {
 	return nil
 }
 
-func (x *ToggleAttachProductsToBrands) GetBrandIds() []int32 {
+func (x *ToggleAttachProductsToBrands) GetBrandIds() int32 {
 	if x != nil {
 		return x.BrandIds
 	}
-	return nil
+	return 0
 }
 
 type ToggleAttachProductsToBrandsParams struct {
@@ -2141,7 +2141,7 @@ func (x *ToggleAttachProductsToBrandsParams) GetList() *ToggleAttachProductsToBr
 type ToggleAttachProductsToTags struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ProductUuids  [][]byte               `protobuf:"bytes,1,rep,name=product_uuids,json=productUuids,proto3" json:"product_uuids,omitempty"`
-	TagIds        []int32                `protobuf:"varint,2,rep,packed,name=tag_ids,json=tagIds,proto3" json:"tag_ids,omitempty"`
+	TagIds        int32                  `protobuf:"varint,2,opt,name=tag_ids,json=tagIds,proto3" json:"tag_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2183,11 +2183,11 @@ func (x *ToggleAttachProductsToTags) GetProductUuids() [][]byte {
 	return nil
 }
 
-func (x *ToggleAttachProductsToTags) GetTagIds() []int32 {
+func (x *ToggleAttachProductsToTags) GetTagIds() int32 {
 	if x != nil {
 		return x.TagIds
 	}
-	return nil
+	return 0
 }
 
 type ToggleAttachProductsToTagsParams struct {
@@ -2350,7 +2350,7 @@ const file_catalog_products_proto_rawDesc = "" +
 	"\x04slug\x18\x01 \x01(\tR\x04slug\"j\n" +
 	" ToggleAttachProductsToCategories\x12#\n" +
 	"\rproduct_uuids\x18\x01 \x03(\fR\fproductUuids\x12!\n" +
-	"\fcategory_ids\x18\x02 \x03(\x05R\vcategoryIds\"e\n" +
+	"\fcategory_ids\x18\x02 \x01(\x05R\vcategoryIds\"e\n" +
 	"$ToggleAttachProductsToCategoryParams\x12=\n" +
 	"\x04list\x18\x01 \x01(\v2).catalog.ToggleAttachProductsToCategoriesR\x04list\"\\\n" +
 	"\x1fCommonToggleAttachProductStatus\x12!\n" +
@@ -2360,12 +2360,12 @@ const file_catalog_products_proto_rawDesc = "" +
 	"\bstatuses\x18\x01 \x01(\v2(.catalog.CommonToggleAttachProductStatusR\bstatuses\"`\n" +
 	"\x1cToggleAttachProductsToBrands\x12#\n" +
 	"\rproduct_uuids\x18\x01 \x03(\fR\fproductUuids\x12\x1b\n" +
-	"\tbrand_ids\x18\x02 \x03(\x05R\bbrandIds\"_\n" +
+	"\tbrand_ids\x18\x02 \x01(\x05R\bbrandIds\"_\n" +
 	"\"ToggleAttachProductsToBrandsParams\x129\n" +
 	"\x04list\x18\x01 \x01(\v2%.catalog.ToggleAttachProductsToBrandsR\x04list\"Z\n" +
 	"\x1aToggleAttachProductsToTags\x12#\n" +
 	"\rproduct_uuids\x18\x01 \x03(\fR\fproductUuids\x12\x17\n" +
-	"\atag_ids\x18\x02 \x03(\x05R\x06tagIds\"]\n" +
+	"\atag_ids\x18\x02 \x01(\x05R\x06tagIds\"]\n" +
 	" ToggleAttachProductsToTagsParams\x129\n" +
 	"\x04list\x18\x01 \x01(\v2%.catalog.ToggleAttachProductsToBrandsR\x04list*H\n" +
 	"\rProductStatus\x12\x0f\n" +

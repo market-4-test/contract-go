@@ -1853,7 +1853,7 @@ func (x *CheckProductAvailableSlugParams) GetSlug() string {
 type ToggleAttachProductsToCategories struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ProductUuids  [][]byte               `protobuf:"bytes,1,rep,name=product_uuids,json=productUuids,proto3" json:"product_uuids,omitempty"`
-	CategoryIds   [][]byte               `protobuf:"bytes,2,rep,name=category_ids,json=categoryIds,proto3" json:"category_ids,omitempty"`
+	CategoryIds   []int32                `protobuf:"varint,2,rep,packed,name=category_ids,json=categoryIds,proto3" json:"category_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1895,7 +1895,7 @@ func (x *ToggleAttachProductsToCategories) GetProductUuids() [][]byte {
 	return nil
 }
 
-func (x *ToggleAttachProductsToCategories) GetCategoryIds() [][]byte {
+func (x *ToggleAttachProductsToCategories) GetCategoryIds() []int32 {
 	if x != nil {
 		return x.CategoryIds
 	}
@@ -2350,7 +2350,7 @@ const file_catalog_products_proto_rawDesc = "" +
 	"\x04slug\x18\x01 \x01(\tR\x04slug\"j\n" +
 	" ToggleAttachProductsToCategories\x12#\n" +
 	"\rproduct_uuids\x18\x01 \x03(\fR\fproductUuids\x12!\n" +
-	"\fcategory_ids\x18\x02 \x03(\fR\vcategoryIds\"e\n" +
+	"\fcategory_ids\x18\x02 \x03(\x05R\vcategoryIds\"e\n" +
 	"$ToggleAttachProductsToCategoryParams\x12=\n" +
 	"\x04list\x18\x01 \x01(\v2).catalog.ToggleAttachProductsToCategoriesR\x04list\"\\\n" +
 	"\x1fCommonToggleAttachProductStatus\x12!\n" +
